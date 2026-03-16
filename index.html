@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>IG Craft • Survival Vanilla</title>
     <!-- Font Awesome (ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,6 +19,7 @@
             color: #f0f0f0;
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         html {
@@ -31,6 +32,7 @@
             --violeta: #b300ff;
             --amarelo: #ffcc00;
             --ciano: #00e5ff;
+            --vermelho: #ff4d4d;      /* para o vip supremo */
             --bg-dark: #0f0f0f;
             --bg-card: #1e1e1e;
             --text-light: #f5f5f5;
@@ -45,6 +47,7 @@
             z-index: 100;
             border-bottom: 2px solid var(--roxo);
             box-shadow: 0 0 15px rgba(155, 77, 255, 0.2);
+            width: 100%;
         }
 
         nav {
@@ -54,6 +57,8 @@
             padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -67,6 +72,8 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -96,6 +103,7 @@
             background: var(--roxo);
             color: white;
             box-shadow: 0 4px 12px rgba(155, 77, 255, 0.3);
+            text-align: center;
         }
 
         .btn:hover {
@@ -118,7 +126,7 @@
             box-shadow: 0 0 15px var(--ciano);
         }
 
-        /* Hero Section - agora mais equilibrada, sem excesso de cores */
+        /* Hero Section */
         .hero {
             min-height: 80vh;
             display: flex;
@@ -128,7 +136,8 @@
             background: linear-gradient(145deg, #120b1a 0%, #0a0a0a 80%);
             position: relative;
             overflow: hidden;
-            padding: 2rem;
+            padding: 2rem 5%;
+            width: 100%;
         }
 
         .hero::before {
@@ -146,10 +155,11 @@
             max-width: 900px;
             position: relative;
             z-index: 2;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
             margin-bottom: 1rem;
             line-height: 1.2;
             color: #ffffff;
@@ -162,12 +172,13 @@
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 4vw, 1.3rem);
             color: #ccc;
             margin-bottom: 2rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 1rem;
         }
 
         .hero-buttons {
@@ -182,14 +193,15 @@
             padding: 5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 6vw, 2.5rem);
             margin-bottom: 3rem;
             position: relative;
-            display: inline-block;
+            display: block;
             width: 100%;
             color: #fff;
         }
@@ -208,9 +220,10 @@
         /* Cards */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            width: 100%;
         }
 
         .card {
@@ -221,6 +234,7 @@
             border: 1px solid #333;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            width: 100%;
         }
 
         .card:hover {
@@ -249,18 +263,19 @@
         /* Grid de comandos */
         .commands-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 1rem;
             background: #151515;
             padding: 2rem;
             border-radius: 30px;
             border: 1px solid var(--violeta);
             box-shadow: 0 0 20px rgba(179, 0, 255, 0.15);
+            width: 100%;
         }
 
         .command-item {
             background: #1f1f1f;
-            padding: 0.8rem 1.2rem;
+            padding: 0.8rem 1rem;
             border-radius: 40px;
             text-align: center;
             font-family: 'Courier New', monospace;
@@ -268,6 +283,9 @@
             color: var(--ciano);
             border: 1px solid #444;
             transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .command-item:hover {
@@ -278,23 +296,27 @@
             box-shadow: 0 0 20px var(--amarelo);
         }
 
-        /* Vips */
+        /* Vips - ajustado para os dois planos */
         .vips-container {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
+            align-items: stretch;
             margin-top: 2rem;
+            width: 100%;
         }
 
         .vip-card {
             background: linear-gradient(145deg, #1a1a1a, #121212);
             border-radius: 30px;
             padding: 2rem;
-            width: 280px;
+            width: min(100%, 320px);
             text-align: center;
             border: 1px solid var(--roxo);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .vip-card:hover {
@@ -304,12 +326,11 @@
 
         .vip-card h4 {
             font-size: 2rem;
-            color: var(--amarelo);
             margin-bottom: 1rem;
         }
 
         .vip-card .price {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
             color: var(--ciano);
             margin: 1rem 0;
@@ -319,15 +340,32 @@
             list-style: none;
             margin: 1.5rem 0;
             color: #ccc;
+            flex-grow: 1;
         }
 
         .vip-card li {
-            margin: 0.5rem 0;
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .vip-card li i {
             color: var(--roxo);
-            margin-right: 8px;
+            width: 20px;
+        }
+
+        .vip-card .btn {
+            margin-top: auto;
+        }
+
+        /* Cores específicas para cada vip */
+        .vip-master h4 span {
+            color: var(--ciano);
+        }
+        .vip-supremo h4 span {
+            color: var(--vermelho);
         }
 
         /* Footer */
@@ -336,6 +374,7 @@
             padding: 3rem 5% 1.5rem;
             border-top: 2px solid var(--ciano);
             text-align: center;
+            width: 100%;
         }
 
         .footer-content {
@@ -343,6 +382,8 @@
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .footer-links {
@@ -380,19 +421,29 @@
             font-size: 0.9rem;
         }
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        /* Ajustes para mobile */
+        @media (max-width: 480px) {
             nav {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: center;
             }
             .nav-links {
                 gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            .commands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .command-item {
+                white-space: normal;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -414,7 +465,7 @@
     </header>
 
     <main>
-        <!-- Hero mais equilibrado, menos cores simultâneas -->
+        <!-- Hero -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1><span>🌍 Survival Vanilla</span><br> IG Craft</h1>
@@ -429,7 +480,7 @@
         <!-- Sobre -->
         <section id="sobre">
             <h2 class="section-title">⚡ Sobre o IG Craft</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto; color: #ccc;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto; color: #ccc; padding: 0 1rem;">
                 <p style="font-size: 1.2rem;">Um servidor Survival Vanilla sem frescuras, mas cheio de qualidade! Nosso objetivo é trazer a essência do Minecraft com sistemas que facilitam a vida sem perder a dificuldade.</p>
                 <p style="margin-top: 1rem;">Possuímos <strong>RTP</strong> funcionando no Survival, Mundo de Recursos, Nether e The End. Tudo isso com economia própria, loja do servidor, caixas e kits iniciais.</p>
             </div>
@@ -496,54 +547,49 @@
             <p style="text-align: center; margin-top: 2rem; color: var(--ciano);">... e muitos outros! Tudo pensado para sua comodidade.</p>
         </section>
 
-        <!-- Vips -->
+        <!-- Vips - atualizado com os planos corretos -->
         <section id="vips">
             <h2 class="section-title">💎 Vips - Ajude a manter o servidor</h2>
             <div class="vips-container">
-                <div class="vip-card">
-                    <h4>VIP <span style="color: var(--roxo);">Roxo</span></h4>
+                <!-- VIP Master (ciano) R$15 -->
+                <div class="vip-card vip-master">
+                    <h4>VIP <span style="color: var(--ciano);">Master</span></h4>
                     <div class="price">R$ 15,00</div>
                     <ul>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Kit VIP exclusivo</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> 5 homes</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Acesso a /fly no spawn</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Tag colorida</li>
+                        <li><i class="fas fa-check-circle"></i> Kit Master exclusivo</li>
+                        <li><i class="fas fa-check-circle"></i> 8 homes</li>
+                        <li><i class="fas fa-check-circle"></i> /fly no spawn</li>
+                        <li><i class="fas fa-check-circle"></i> Tag colorida [Master]</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso a /hat</li>
                     </ul>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem;">Adquirir</a>
+                    <a href="#" class="btn">Adquirir</a>
                 </div>
-                <div class="vip-card">
-                    <h4>VIP <span style="color: var(--ciano);">Ciano</span></h4>
-                    <div class="price">R$ 30,00</div>
+                <!-- VIP Supremo (vermelho) R$25 -->
+                <div class="vip-card vip-supremo">
+                    <h4>VIP <span style="color: var(--vermelho);">Supremo</span></h4>
+                    <div class="price">R$ 25,00</div>
                     <ul>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Todos anteriores</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> 10 homes</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> /hat (colocar item na cabeça)</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Acesso a /feed</li>
+                        <li><i class="fas fa-check-circle"></i> Todos benefícios do Master</li>
+                        <li><i class="fas fa-check-circle"></i> 15 homes</li>
+                        <li><i class="fas fa-check-circle"></i> /fly no survival</li>
+                        <li><i class="fas fa-check-circle"></i> Kit Supremo lendário</li>
+                        <li><i class="fas fa-check-circle"></i> /feed e /heal</li>
+                        <li><i class="fas fa-check-circle"></i> Tag especial [Supremo]</li>
                     </ul>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem;">Adquirir</a>
-                </div>
-                <div class="vip-card">
-                    <h4>VIP <span style="color: var(--amarelo);">Amarelo</span></h4>
-                    <div class="price">R$ 50,00</div>
-                    <ul>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Todos anteriores</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> 15 homes</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> /fly no survival</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--ciano);"></i> Kit especial lendário</li>
-                    </ul>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem;">Adquirir</a>
+                    <a href="#" class="btn">Adquirir</a>
                 </div>
             </div>
             <p style="text-align: center; margin-top: 2rem; color: #aaa;">* Os Vips ajudam a manter os custos do servidor e garantem benefícios legais :)</p>
         </section>
 
         <!-- Loja -->
-        <section id="loja" style="text-align: center; background: linear-gradient(145deg, #0e0b14, #0a0a0a); border-radius: 60px; margin: 2rem 5%;">
+        <section id="loja" style="text-align: center; background: linear-gradient(145deg, #0e0b14, #0a0a0a); border-radius: 60px; margin: 2rem 5%; padding: 3rem 5%;">
             <h2 class="section-title" style="margin-bottom: 1.5rem;">🛒 Loja do Servidor</h2>
             <p style="font-size: 1.3rem; margin-bottom: 2rem;">Sistema completo de compra e venda de itens. Negocie com outros players ou com o servidor!</p>
             <a href="#" class="btn btn-secondary">Acessar Loja</a>
-            <div style="margin-top: 2rem; font-size: 1.2rem;">
-                <i class="fas fa-diamond" style="color: var(--ciano);"></i> /shop  |  <i class="fas fa-coins" style="color: var(--amarelo);"></i> /loja
+            <div style="margin-top: 2rem; font-size: 1.2rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <span><i class="fas fa-diamond" style="color: var(--ciano);"></i> /shop</span>
+                <span><i class="fas fa-coins" style="color: var(--amarelo);"></i> /loja</span>
             </div>
         </section>
     </main>

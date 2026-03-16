@@ -18,6 +18,13 @@
             background-color: #0a0a0a;
             color: #f0f0f0;
             line-height: 1.5;
+            /* padrão de grama sutil (minecraft feel) */
+            background-image: 
+                linear-gradient(45deg, #2a4a2a 2%, transparent 2%),
+                linear-gradient(-45deg, #2a4a2a 2%, transparent 2%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px;
+            background-attachment: fixed;
         }
 
         html {
@@ -36,7 +43,7 @@
             --text-light: #f0f0f0;
         }
 
-        /* Header - mais compacto */
+        /* Header - compacto */
         header {
             background: #0c0c0c;
             border-bottom: 2px solid var(--roxo);
@@ -50,13 +57,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 5%; /* mais compacto */
+            padding: 0.5rem 5%;
             max-width: 1400px;
             margin: 0 auto;
-            min-height: 60px; /* altura fixa */
+            min-height: 60px;
         }
 
-        /* Logo com degradê roxo e amarelo (sem ciano) */
+        /* Logo com degradê roxo e amarelo */
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
@@ -69,7 +76,7 @@
             white-space: nowrap;
         }
 
-        /* Menu normal para desktop */
+        /* Menu normal desktop */
         .nav-links {
             display: flex;
             gap: 1.5rem;
@@ -91,14 +98,27 @@
             color: var(--amarelo);
         }
 
-        /* Botão de entrar no menu */
-        .nav-links .btn {
+        /* Botão Discord no menu */
+        .btn-discord {
+            background: #5865F2; /* cor do Discord */
+            color: white;
             padding: 0.4rem 1.5rem;
-            font-size: 0.95rem;
-            margin-left: 0.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+        }
+        .btn-discord:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.6);
         }
 
-        /* Ícone do menu hambúrguer (visível apenas em mobile) */
+        /* Ícone do menu hambúrguer (mobile) */
         .menu-toggle {
             display: none;
             font-size: 2rem;
@@ -113,7 +133,7 @@
             color: var(--roxo);
         }
 
-        /* Overlay para fechar o menu em mobile */
+        /* Overlay para fechar menu mobile */
         .menu-overlay {
             display: none;
             position: fixed;
@@ -131,6 +151,11 @@
             display: block;
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Botão de fechar (só mobile) */
+        .close-menu {
+            display: none; /* escondido no desktop */
         }
 
         /* Botões gerais */
@@ -176,10 +201,27 @@
             text-align: center;
             background: radial-gradient(circle at 30% 40%, #1a1025, #0a0a0a 80%);
             padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        /* sobreposição de grama no hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(45deg, rgba(60, 100, 60, 0.1) 2%, transparent 2%),
+                linear-gradient(-45deg, rgba(60, 100, 60, 0.1) 2%, transparent 2%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px;
+            pointer-events: none;
+            z-index: -1;
         }
 
         .hero-content {
             max-width: 900px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -214,6 +256,8 @@
             padding: 4rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
@@ -465,23 +509,10 @@
             width: 24px;
         }
 
-        /* LOJA – centralizada */
-        #loja {
-            background: linear-gradient(145deg, #100d15, #0a0a0a);
-            border-radius: 70px;
-            margin: 2rem auto;
-            max-width: 1200px;
-            padding: 3rem 2rem;
-            text-align: center;
-            border: 1px solid var(--roxo);
-            box-shadow: 0 0 30px rgba(155,77,255,0.2);
-        }
-        .loja-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* LOJA – comentada (removida do site) */
+        /* a seção loja foi removida conforme solicitado */
 
-        /* Footer */
+        /* Footer apenas com Discord */
         footer {
             background: #070707;
             padding: 3rem 5% 1.5rem;
@@ -502,15 +533,15 @@
         .footer-links a:hover {
             color: var(--amarelo);
         }
-        .social i {
-            font-size: 1.8rem;
-            margin: 0 0.8rem;
-            color: #666;
+        .social a {
+            color: #5865F2;
+            font-size: 2.5rem;
             transition: 0.3s;
         }
-        .social i:hover {
-            color: var(--ciano);
+        .social a:hover {
+            color: #4752c4;
             transform: scale(1.2);
+            display: inline-block;
         }
         .copy {
             color: #444;
@@ -518,7 +549,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- MENU RESPONSIVO (compacto e profissional) --- */
+        /* --- MENU RESPONSIVO --- */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -552,14 +583,15 @@
                 border-bottom: 1px solid #333;
             }
 
-            .nav-links .btn {
-                margin: 1rem 0 0;
+            .nav-links .btn-discord {
                 width: 100%;
-                text-align: center;
+                justify-content: center;
+                margin-top: 0.5rem;
             }
 
-            /* Botão de fechar no menu mobile */
+            /* Botão de fechar visível apenas no mobile */
             .close-menu {
+                display: block;
                 position: absolute;
                 top: 1rem;
                 right: 1rem;
@@ -571,7 +603,13 @@
             }
         }
 
-        /* Para telas muito pequenas, ajustes adicionais */
+        /* No desktop, o botão de fechar fica oculto */
+        @media (min-width: 769px) {
+            .close-menu {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 480px) {
             .nav-container {
                 padding: 0.5rem 4%;
@@ -598,19 +636,18 @@
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
                 <a href="#membros">Membros</a>
-                <a href="#loja">Loja</a>
-                <a href="#" class="btn">Entrar</a>
+                <!-- Link da Loja removido -->
+                <a href="https://discord.gg/TmRHhzZSqQ" class="btn-discord" target="_blank"><i class="fab fa-discord"></i> Discord</a>
             </nav>
         </div>
-        <!-- Overlay para fechar menu ao clicar fora -->
         <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero com emoji alterado para 🌎 -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1><span>🌍 Survival Vanilla</span><br> IG Craft</h1>
+                <h1><span>🌎 Survival Vanilla</span><br> IG Craft</h1>
                 <p>Survival raiz com sistemas que deixam tudo mais divertido e organizado. Venha fazer parte!</p>
                 <div class="hero-buttons">
                     <a href="#recursos" class="btn">Conhecer</a>
@@ -758,28 +795,27 @@
             </ul>
         </section>
 
-        <!-- LOJA – centralizada -->
+        <!-- Seção da Loja removida (comentada para referência futura) -->
+        <!--
         <section id="loja">
             <div class="loja-content">
-                <h2 class="section-title" style="margin-bottom:1.5rem;">🛒 Loja do servidor</h2>
-                <p style="font-size:1.3rem; margin-bottom:2rem;">Sistema completo de compra e venda de itens. Negocie com outros players ou com o servidor!</p>
-                <a href="#" class="btn btn-outline" style="font-size:1.2rem;">Acessar Loja</a>
-                <div style="margin-top:2rem; display: flex; gap:2rem; justify-content: center; flex-wrap: wrap;">
-                    <span><i class="fas fa-diamond" style="color:var(--ciano);"></i> /shop</span>
-                    <span><i class="fas fa-coins" style="color:var(--amarelo);"></i> /loja</span>
-                </div>
+                <h2 class="section-title">🛒 Loja do servidor</h2>
+                <p>...</p>
             </div>
         </section>
+        -->
     </main>
 
     <footer>
         <div class="logo" style="font-size:2.2rem;">IG Craft</div>
         <p style="color:#aaa;">Survival Vanilla com alma de comunidade</p>
         <div class="footer-links">
-            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#loja">Loja</a>
+            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a>
+            <!-- link da loja removido -->
         </div>
         <div class="social">
-            <a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
+            <!-- Apenas Discord -->
+            <a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
     </footer>
@@ -794,21 +830,21 @@
         function openMenu() {
             navLinks.classList.add('active');
             menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // impede rolagem
+            document.body.style.overflow = 'hidden';
         }
 
         function closeMenuFunc() {
             navLinks.classList.remove('active');
             menuOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // restaura rolagem
+            document.body.style.overflow = '';
         }
 
         menuToggle.addEventListener('click', openMenu);
         closeMenu.addEventListener('click', closeMenuFunc);
         menuOverlay.addEventListener('click', closeMenuFunc);
 
-        // Fechar menu ao clicar em um link (opcional)
-        const links = navLinks.querySelectorAll('a');
+        // Fechar menu ao clicar em link (exceto Discord abre em nova aba)
+        const links = navLinks.querySelectorAll('a:not([target="_blank"])');
         links.forEach(link => {
             link.addEventListener('click', closeMenuFunc);
         });
@@ -820,7 +856,6 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if(target) {
                     target.scrollIntoView({behavior:'smooth'});
-                    // Se o menu estiver aberto, fechar
                     if (navLinks.classList.contains('active')) {
                         closeMenuFunc();
                     }

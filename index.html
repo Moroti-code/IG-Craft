@@ -55,12 +55,16 @@
             flex-wrap: wrap;
         }
 
+        /* Logo com degradê suave (roxo, violeta, ciano) */
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--roxo);
-            text-shadow: 0 0 8px var(--roxo);
+            background: linear-gradient(135deg, var(--roxo), var(--violeta), var(--ciano));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(155, 77, 255, 0.3);
         }
 
         .nav-links {
@@ -414,11 +418,12 @@
             width: 24px;
         }
 
-        /* Loja */
+        /* LOJA – CORRIGIDO: centralizado perfeitamente */
         #loja {
             background: linear-gradient(145deg, #100d15, #0a0a0a);
             border-radius: 70px;
-            margin: 2rem 5%;
+            margin: 2rem auto; /* centraliza horizontalmente */
+            max-width: 1200px;   /* limita largura */
             padding: 3rem 2rem;
             text-align: center;
             border: 1px solid var(--violeta);
@@ -588,7 +593,7 @@
                     </div>
                 </div>
 
-                <!-- VIP Supremo (vermelho) -->
+                <!-- VIP Supremo (vermelho) COM COMANDOS ADICIONAIS -->
                 <div class="vip-card supremo">
                     <div class="vip-header">
                         <h3 style="color: var(--vermelho);">VIP Supremo</h3>
@@ -606,6 +611,9 @@
                         <h4>Comandos exclusivos</h4>
                         <div class="cmd-tags">
                             <span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span>
+                            <!-- NOVOS COMANDOS -->
+                            <span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span>
+                            <span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span>
                         </div>
                     </div>
                     <div class="vip-bonus">
@@ -652,7 +660,7 @@
             </ul>
         </section>
 
-        <!-- Loja (totalmente alinhada) -->
+        <!-- LOJA – CORRIGIDA: centralizada -->
         <section id="loja">
             <div class="loja-content">
                 <h2 class="section-title" style="margin-bottom:1.5rem;">🛒 Loja do servidor</h2>
@@ -675,7 +683,8 @@
         <div class="social">
             <a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <div class="copy">&copy; 2025 IG Craft. Minecraft é marca registrada da Mojang.</div>
+        <!-- ANO CORRIGIDO PARA 2026 -->
+        <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
     </footer>
 
     <script>

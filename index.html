@@ -18,7 +18,6 @@
             background-color: #0a0a0a;
             color: #f0f0f0;
             line-height: 1.5;
-            /* padrão de grama sutil (minecraft feel) */
             background-image: 
                 linear-gradient(45deg, #2a4a2a 2%, transparent 2%),
                 linear-gradient(-45deg, #2a4a2a 2%, transparent 2%);
@@ -100,7 +99,7 @@
 
         /* Botão Discord no menu */
         .btn-discord {
-            background: #5865F2; /* cor do Discord */
+            background: #5865F2;
             color: white;
             padding: 0.4rem 1.5rem;
             border-radius: 40px;
@@ -155,7 +154,7 @@
 
         /* Botão de fechar (só mobile) */
         .close-menu {
-            display: none; /* escondido no desktop */
+            display: none;
         }
 
         /* Botões gerais */
@@ -204,7 +203,6 @@
             position: relative;
             z-index: 1;
         }
-        /* sobreposição de grama no hero */
         .hero::after {
             content: '';
             position: absolute;
@@ -509,8 +507,56 @@
             width: 24px;
         }
 
-        /* LOJA – comentada (removida do site) */
-        /* a seção loja foi removida conforme solicitado */
+        /* Seção de IPs (conexão) */
+        .ip-section {
+            background: #0f0f0f;
+            border-radius: 60px;
+            padding: 3rem 2rem;
+            margin: 3rem auto;
+            border: 2px solid var(--roxo);
+            box-shadow: 0 0 40px rgba(155, 77, 255, 0.3);
+            text-align: center;
+        }
+        .ip-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .ip-box {
+            background: #1a1a1a;
+            padding: 2rem 2.5rem;
+            border-radius: 40px;
+            min-width: 260px;
+            border: 1px solid var(--ciano);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        }
+        .ip-box h3 {
+            color: var(--amarelo);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .ip-address {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--ciano);
+            background: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            border: 1px solid var(--roxo);
+            word-break: break-all;
+        }
+        .ip-label {
+            margin-top: 0.8rem;
+            color: #aaa;
+            font-size: 1rem;
+        }
+        .ip-label i {
+            color: var(--amarelo);
+            margin-right: 0.3rem;
+        }
 
         /* Footer apenas com Discord */
         footer {
@@ -589,7 +635,6 @@
                 margin-top: 0.5rem;
             }
 
-            /* Botão de fechar visível apenas no mobile */
             .close-menu {
                 display: block;
                 position: absolute;
@@ -603,7 +648,6 @@
             }
         }
 
-        /* No desktop, o botão de fechar fica oculto */
         @media (min-width: 769px) {
             .close-menu {
                 display: none !important;
@@ -616,6 +660,9 @@
             }
             .logo {
                 font-size: 1.5rem;
+            }
+            .ip-box {
+                width: 100%;
             }
         }
     </style>
@@ -636,7 +683,7 @@
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
                 <a href="#membros">Membros</a>
-                <!-- Link da Loja removido -->
+                <a href="#conectar">Conectar</a>
                 <a href="https://discord.gg/TmRHhzZSqQ" class="btn-discord" target="_blank"><i class="fab fa-discord"></i> Discord</a>
             </nav>
         </div>
@@ -644,7 +691,7 @@
     </header>
 
     <main>
-        <!-- Hero com emoji alterado para 🌎 -->
+        <!-- Hero -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1><span>🌎 Survival Vanilla</span><br> IG Craft</h1>
@@ -729,7 +776,7 @@
                     </div>
                 </div>
 
-                <!-- VIP Supremo (vermelho) COM COMANDOS ADICIONAIS -->
+                <!-- VIP Supremo (vermelho) -->
                 <div class="vip-card supremo">
                     <div class="vip-header">
                         <h3 style="color: var(--vermelho);">VIP Supremo</h3>
@@ -795,14 +842,27 @@
             </ul>
         </section>
 
-        <!-- Seção da Loja removida (comentada para referência futura) -->
-        <!--
-        <section id="loja">
-            <div class="loja-content">
-                <h2 class="section-title">🛒 Loja do servidor</h2>
-                <p>...</p>
+        <!-- Seção de IPs (conexão) -->
+        <section id="conectar" class="ip-section">
+            <h2 class="section-title" style="margin-bottom: 1rem;">🔌 Conecte-se ao servidor</h2>
+            <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Use as informações abaixo para entrar no IG Craft. Suportamos Java e Bedrock.</p>
+            <div class="ip-container">
+                <div class="ip-box">
+                    <h3><i class="fas fa-coffee"></i> Java Edition</h3>
+                    <div class="ip-address">igcraft.bed.net.br:25466</div>
+                    <div class="ip-label"><i class="fas fa-gamepad"></i> Versão 1.21+</div>
+                </div>
+                <div class="ip-box">
+                    <h3><i class="fas fa-mobile-alt"></i> Bedrock Edition</h3>
+                    <div class="ip-address">igcraft.bed.net.br:25560</div>
+                    <div class="ip-label"><i class="fas fa-wifi"></i> Porta 25560</div>
+                </div>
             </div>
         </section>
+
+        <!-- Loja removida (comentada) -->
+        <!--
+        <section id="loja">...</section>
         -->
     </main>
 
@@ -810,11 +870,9 @@
         <div class="logo" style="font-size:2.2rem;">IG Craft</div>
         <p style="color:#aaa;">Survival Vanilla com alma de comunidade</p>
         <div class="footer-links">
-            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a>
-            <!-- link da loja removido -->
+            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#conectar">Conectar</a>
         </div>
         <div class="social">
-            <!-- Apenas Discord -->
             <a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
@@ -843,13 +901,11 @@
         closeMenu.addEventListener('click', closeMenuFunc);
         menuOverlay.addEventListener('click', closeMenuFunc);
 
-        // Fechar menu ao clicar em link (exceto Discord abre em nova aba)
         const links = navLinks.querySelectorAll('a:not([target="_blank"])');
         links.forEach(link => {
             link.addEventListener('click', closeMenuFunc);
         });
 
-        // Scroll suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();

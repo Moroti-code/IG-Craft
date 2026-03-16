@@ -26,8 +26,9 @@
 
         :root {
             --roxo: #9b4dff;
-            --violeta: #b300ff;
+            --roxo-escuro: #7b2eda;
             --amarelo: #ffcc00;
+            --amarelo-queimado: #e6b800;
             --ciano: #00e5ff;
             --vermelho: #ff4d4d;
             --bg-dark: #0f0f0f;
@@ -35,42 +36,44 @@
             --text-light: #f0f0f0;
         }
 
-        /* Header */
+        /* Header - mais compacto */
         header {
             background: #0c0c0c;
             border-bottom: 2px solid var(--roxo);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 0 15px rgba(155, 77, 255, 0.3);
         }
 
-        nav {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 5%;
+            padding: 0.5rem 5%; /* mais compacto */
             max-width: 1400px;
             margin: 0 auto;
-            flex-wrap: wrap;
+            min-height: 60px; /* altura fixa */
         }
 
-        /* Logo com degradê suave (roxo, violeta, ciano) */
+        /* Logo com degradê roxo e amarelo (sem ciano) */
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--roxo), var(--violeta), var(--ciano));
+            background: linear-gradient(135deg, var(--roxo), var(--amarelo));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(155, 77, 255, 0.3);
+            text-shadow: 0 0 8px rgba(155, 77, 255, 0.3);
+            white-space: nowrap;
         }
 
+        /* Menu normal para desktop */
         .nav-links {
             display: flex;
             gap: 1.5rem;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-links a {
@@ -80,13 +83,57 @@
             transition: 0.3s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
-            border-bottom-color: var(--ciano);
-            color: var(--ciano);
+            border-bottom-color: var(--amarelo);
+            color: var(--amarelo);
         }
 
+        /* Botão de entrar no menu */
+        .nav-links .btn {
+            padding: 0.4rem 1.5rem;
+            font-size: 0.95rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Ícone do menu hambúrguer (visível apenas em mobile) */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--amarelo);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        .menu-toggle:hover {
+            color: var(--roxo);
+        }
+
+        /* Overlay para fechar o menu em mobile */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Botões gerais */
         .btn {
             display: inline-block;
             padding: 0.6rem 1.8rem;
@@ -102,9 +149,9 @@
         }
 
         .btn:hover {
-            background: var(--violeta);
+            background: var(--roxo-escuro);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(179, 0, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(155, 77, 255, 0.5);
         }
 
         .btn-outline {
@@ -235,7 +282,7 @@
             background: #151515;
             padding: 2rem;
             border-radius: 40px;
-            border: 1px solid var(--violeta);
+            border: 1px solid var(--roxo);
         }
 
         .command-item {
@@ -418,16 +465,16 @@
             width: 24px;
         }
 
-        /* LOJA – CORRIGIDO: centralizado perfeitamente */
+        /* LOJA – centralizada */
         #loja {
             background: linear-gradient(145deg, #100d15, #0a0a0a);
             border-radius: 70px;
-            margin: 2rem auto; /* centraliza horizontalmente */
-            max-width: 1200px;   /* limita largura */
+            margin: 2rem auto;
+            max-width: 1200px;
             padding: 3rem 2rem;
             text-align: center;
-            border: 1px solid var(--violeta);
-            box-shadow: 0 0 30px rgba(179,0,255,0.2);
+            border: 1px solid var(--roxo);
+            box-shadow: 0 0 30px rgba(155,77,255,0.2);
         }
         .loja-content {
             max-width: 800px;
@@ -471,40 +518,92 @@
             font-size: 0.9rem;
         }
 
-        /* Responsivo */
-        @media (max-width: 600px) {
-            nav {
+        /* --- MENU RESPONSIVO (compacto e profissional) --- */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 260px;
+                height: 100vh;
+                background: #0f0f0f;
                 flex-direction: column;
-                gap: 0.8rem;
+                align-items: flex-start;
+                padding: 5rem 1.5rem 2rem;
+                gap: 1.2rem;
+                transition: right 0.3s ease-in-out;
+                z-index: 1001;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.8);
+                border-left: 2px solid var(--roxo);
             }
-            .vip-header {
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: start;
+
+            .nav-links.active {
+                right: 0;
             }
-            .vip-info-grid {
-                grid-template-columns: 1fr;
+
+            .nav-links a {
+                font-size: 1.2rem;
+                width: 100%;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #333;
             }
-            .members-features {
-                grid-template-columns: 1fr;
+
+            .nav-links .btn {
+                margin: 1rem 0 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Botão de fechar no menu mobile */
+            .close-menu {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                font-size: 2rem;
+                color: var(--amarelo);
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        /* Para telas muito pequenas, ajustes adicionais */
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0.5rem 4%;
+            }
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
+        <div class="nav-container">
             <div class="logo">IG Craft</div>
-            <div class="nav-links">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu" aria-label="Fechar menu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <a href="#home">Início</a>
                 <a href="#recursos">Recursos</a>
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
                 <a href="#membros">Membros</a>
                 <a href="#loja">Loja</a>
-            </div>
-            <a href="#" class="btn" style="padding:0.5rem 1.5rem;">Entrar</a>
-        </nav>
+                <a href="#" class="btn">Entrar</a>
+            </nav>
+        </div>
+        <!-- Overlay para fechar menu ao clicar fora -->
+        <div class="menu-overlay" id="menuOverlay"></div>
     </header>
 
     <main>
@@ -611,7 +710,6 @@
                         <h4>Comandos exclusivos</h4>
                         <div class="cmd-tags">
                             <span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span>
-                            <!-- NOVOS COMANDOS -->
                             <span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span>
                             <span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span>
                         </div>
@@ -660,7 +758,7 @@
             </ul>
         </section>
 
-        <!-- LOJA – CORRIGIDA: centralizada -->
+        <!-- LOJA – centralizada -->
         <section id="loja">
             <div class="loja-content">
                 <h2 class="section-title" style="margin-bottom:1.5rem;">🛒 Loja do servidor</h2>
@@ -683,16 +781,50 @@
         <div class="social">
             <a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-        <!-- ANO CORRIGIDO PARA 2026 -->
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
     </footer>
 
     <script>
+        // Menu mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const closeMenu = document.getElementById('closeMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // impede rolagem
+        }
+
+        function closeMenuFunc() {
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // restaura rolagem
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+
+        // Fechar menu ao clicar em um link (opcional)
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', closeMenuFunc);
+        });
+
+        // Scroll suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if(target) target.scrollIntoView({behavior:'smooth'});
+                if(target) {
+                    target.scrollIntoView({behavior:'smooth'});
+                    // Se o menu estiver aberto, fechar
+                    if (navLinks.classList.contains('active')) {
+                        closeMenuFunc();
+                    }
+                }
             });
         });
     </script>

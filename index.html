@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>IG Craft • Survival Vanilla</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -11,62 +11,66 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background-color: #0c0c0c;
+            background-color: #0a0a0a;
             color: #f0f0f0;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        /* Cores principais */
         :root {
             --roxo: #9b4dff;
             --violeta: #b300ff;
             --amarelo: #ffcc00;
             --ciano: #00e5ff;
-            --vermelho: #ff4d4d; /* para o vip supremo */
-            --bg-card: #1e1e1e;
+            --vermelho: #ff4d4d;
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text-light: #f0f0f0;
         }
 
         /* Header */
         header {
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(5px);
+            background: #0c0c0c;
+            border-bottom: 2px solid var(--roxo);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid var(--roxo);
+            box-shadow: 0 0 15px rgba(155, 77, 255, 0.3);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--roxo);
-            text-shadow: 0 0 8px rgba(155, 77, 255, 0.5);
+            text-shadow: 0 0 8px var(--roxo);
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: #f0f0f0;
+            color: #ddd;
             text-decoration: none;
             font-weight: 500;
             transition: 0.3s;
@@ -79,19 +83,18 @@
             color: var(--ciano);
         }
 
-        /* Botões */
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
             font-weight: 600;
             text-decoration: none;
             transition: 0.3s;
             background: var(--roxo);
             color: white;
-            box-shadow: 0 4px 12px rgba(155, 77, 255, 0.3);
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(155, 77, 255, 0.3);
         }
 
         .btn:hover {
@@ -100,16 +103,17 @@
             box-shadow: 0 8px 20px rgba(179, 0, 255, 0.4);
         }
 
-        .btn-secondary {
+        .btn-outline {
             background: transparent;
             border: 2px solid var(--ciano);
             color: var(--ciano);
             box-shadow: none;
         }
 
-        .btn-secondary:hover {
+        .btn-outline:hover {
             background: var(--ciano);
-            color: #0c0c0c;
+            color: #000;
+            border-color: var(--ciano);
         }
 
         /* Hero */
@@ -119,20 +123,18 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(145deg, #120b1a, #0a0a0a);
+            background: radial-gradient(circle at 30% 40%, #1a1025, #0a0a0a 80%);
             padding: 2rem;
         }
 
         .hero-content {
             max-width: 900px;
-            width: 100%;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 8vw, 3.8rem);
             margin-bottom: 1rem;
             color: #fff;
-            text-shadow: 0 0 15px var(--roxo);
         }
 
         .hero h1 span {
@@ -141,8 +143,8 @@
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: #ccc;
+            font-size: 1.2rem;
+            color: #bbb;
             margin-bottom: 2rem;
             max-width: 700px;
             margin-left: auto;
@@ -151,24 +153,24 @@
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Seções */
+        /* Seções gerais */
         section {
-            padding: 5rem 5%;
+            padding: 4rem 5%;
             max-width: 1400px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
             margin-bottom: 3rem;
             color: #fff;
+            position: relative;
         }
 
         .section-title::after {
@@ -177,21 +179,21 @@
             width: 100px;
             height: 4px;
             background: var(--amarelo);
-            margin: 0.5rem auto 0;
+            margin: 0.8rem auto 0;
             border-radius: 2px;
             box-shadow: 0 0 12px var(--amarelo);
         }
 
-        /* Cards de recursos */
+        /* Cards recursos */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
         }
 
         .card {
             background: var(--bg-card);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2rem 1.5rem;
             text-align: center;
             border: 1px solid #333;
@@ -200,169 +202,231 @@
 
         .card:hover {
             border-color: var(--roxo);
+            box-shadow: 0 0 30px rgba(155, 77, 255, 0.2);
             transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(155, 77, 255, 0.2);
         }
 
         .card i {
             font-size: 3rem;
             color: var(--ciano);
-            margin-bottom: 1rem;
             filter: drop-shadow(0 0 8px var(--ciano));
+            margin-bottom: 1rem;
         }
 
         .card h3 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--amarelo);
             margin-bottom: 1rem;
         }
 
-        /* Comandos */
+        .card p {
+            color: #aaa;
+        }
+
+        /* Comandos grid */
         .commands-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.8rem;
             background: #151515;
             padding: 2rem;
-            border-radius: 30px;
+            border-radius: 40px;
             border: 1px solid var(--violeta);
         }
 
         .command-item {
-            background: #1f1f1f;
-            padding: 0.8rem;
+            background: #222;
+            padding: 0.7rem 0.5rem;
             border-radius: 40px;
             text-align: center;
             font-family: 'Courier New', monospace;
+            font-weight: bold;
             color: var(--ciano);
             border: 1px solid #444;
             transition: 0.2s;
+            font-size: 0.95rem;
         }
 
         .command-item:hover {
             background: var(--roxo);
             color: #000;
             border-color: var(--amarelo);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        /* Vips - CORRIGIDO: dois cards apenas, com as cores e valores corretos */
+        /* VIPS - cards detalhados */
         .vips-container {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
-            align-items: stretch;
             margin-top: 2rem;
         }
 
         .vip-card {
-            background: linear-gradient(145deg, #1a1a1a, #121212);
-            border-radius: 30px;
-            padding: 2rem;
-            width: 300px;
-            max-width: 100%;
-            text-align: center;
-            border: 1px solid var(--roxo);
+            background: #141414;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            width: min(100%, 550px);
+            border: 2px solid;
             transition: 0.3s;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
         }
 
+        .vip-card.master {
+            border-color: var(--ciano);
+        }
+        .vip-card.supremo {
+            border-color: var(--vermelho);
+        }
         .vip-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.8);
+        }
+        .vip-card.master:hover {
             border-color: var(--amarelo);
-            box-shadow: 0 0 30px var(--violeta);
+        }
+        .vip-card.supremo:hover {
+            border-color: var(--amarelo);
         }
 
-        .vip-card h4 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Cores específicas para cada vip */
-        .vip-card.master h4 {
-            color: var(--ciano);
-            text-shadow: 0 0 8px var(--ciano);
-        }
-
-        .vip-card.supremo h4 {
-            color: var(--vermelho);
-            text-shadow: 0 0 8px var(--vermelho);
-        }
-
-        .vip-card .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--amarelo);
-            margin: 1rem 0;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem;
-            border-radius: 50px;
-        }
-
-        .vip-card ul {
-            list-style: none;
-            margin: 1.5rem 0;
-            color: #ccc;
-            flex-grow: 1;
-        }
-
-        .vip-card li {
-            margin: 0.8rem 0;
-        }
-
-        .vip-card li i {
-            color: var(--roxo);
-            margin-right: 8px;
-        }
-
-        .vip-card .btn {
-            margin-top: auto;
-            align-self: center;
-            width: fit-content;
-        }
-
-        /* Seção Loja - CORRIGIDA: centralizada e sem desalinhamento */
-        #loja {
-            text-align: center;
-            background: linear-gradient(145deg, #0e0b14, #0a0a0a);
-            border-radius: 60px;
-            margin: 2rem auto;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            width: calc(100% - 4rem);
-        }
-
-        #loja .section-title {
+        .vip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
-
-        #loja p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #ddd;
+        .vip-header h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+        .vip-header .price {
+            font-size: 2rem;
+            font-weight: bold;
+            background: #2a2a2a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+        }
+        .master .price {
+            color: var(--ciano);
+            border: 1px solid var(--ciano);
+        }
+        .supremo .price {
+            color: var(--vermelho);
+            border: 1px solid var(--vermelho);
         }
 
-        .loja-destaque {
+        .vip-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background: #1e1e1e;
+            padding: 1.2rem;
+            border-radius: 24px;
+        }
+        .info-item {
             display: flex;
-            gap: 2rem;
-            justify-content: center;
+            align-items: center;
+            gap: 0.6rem;
+            color: #ccc;
+        }
+        .info-item i {
+            width: 24px;
+            color: var(--amarelo);
+        }
+
+        .vip-commands, .vip-bonus {
+            background: #1a1a1a;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+        .vip-commands h4, .vip-bonus h4, .kits-title {
+            color: var(--amarelo);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        .cmd-tags {
+            display: flex;
             flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .cmd-tags span {
+            background: #2a2a2a;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-family: monospace;
+            border-left: 3px solid var(--ciano);
+        }
+
+        .kits-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .kit-item {
+            background: #202020;
+            border-radius: 20px;
+            padding: 1rem;
+        }
+        .kit-item h5 {
+            color: var(--ciano);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .kit-item ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+        .kit-item li {
+            background: #2d2d2d;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Seção membros */
+        .members-features {
+            background: #111;
+            border-radius: 50px;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--roxo);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem 2rem;
             margin-top: 2rem;
         }
-
-        .loja-destaque span {
-            background: rgba(0, 229, 255, 0.1);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            border: 1px solid var(--ciano);
+        .members-features li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #bbb;
+        }
+        .members-features li i {
             color: var(--ciano);
+            width: 24px;
         }
 
-        .loja-destaque i {
-            margin-right: 8px;
-            color: var(--amarelo);
+        /* Loja */
+        #loja {
+            background: linear-gradient(145deg, #100d15, #0a0a0a);
+            border-radius: 70px;
+            margin: 2rem 5%;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--violeta);
+            box-shadow: 0 0 30px rgba(179,0,255,0.2);
+        }
+        .loja-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Footer */
@@ -372,12 +436,6 @@
             border-top: 2px solid var(--ciano);
             text-align: center;
         }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
         .footer-links {
             display: flex;
             gap: 2rem;
@@ -385,68 +443,45 @@
             flex-wrap: wrap;
             margin: 1.5rem 0;
         }
-
         .footer-links a {
             color: #aaa;
             text-decoration: none;
         }
-
         .footer-links a:hover {
             color: var(--amarelo);
         }
-
         .social i {
             font-size: 1.8rem;
             margin: 0 0.8rem;
             color: #666;
             transition: 0.3s;
         }
-
         .social i:hover {
             color: var(--ciano);
             transform: scale(1.2);
         }
-
         .copy {
             color: #444;
             margin-top: 2rem;
+            font-size: 0.9rem;
         }
 
         /* Responsivo */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             nav {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
             }
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .vip-card {
-                width: 100%;
-                max-width: 350px;
-            }
-            #loja {
-                border-radius: 30px;
-                padding: 3rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-buttons {
+            .vip-header {
                 flex-direction: column;
-                align-items: center;
+                gap: 0.8rem;
+                align-items: start;
             }
-            .btn {
-                width: 100%;
-                max-width: 250px;
+            .vip-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .members-features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -457,133 +492,190 @@
             <div class="logo">IG Craft</div>
             <div class="nav-links">
                 <a href="#home">Início</a>
-                <a href="#sobre">Sobre</a>
                 <a href="#recursos">Recursos</a>
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
+                <a href="#membros">Membros</a>
                 <a href="#loja">Loja</a>
             </div>
-            <a href="#" class="btn" style="padding: 0.5rem 1.5rem;">Entrar no Servidor</a>
+            <a href="#" class="btn" style="padding:0.5rem 1.5rem;">Entrar</a>
         </nav>
     </header>
 
     <main>
-        <!-- Home -->
+        <!-- Hero -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1><span>🌍 Survival Vanilla</span><br> IG Craft</h1>
-                <p>Aqui você vai jogar em um Survival Vanilla raiz, com aquela experiência clássica que todo mundo ama — mas com sistemas que deixam tudo mais divertido e organizado!</p>
+                <p>Survival raiz com sistemas que deixam tudo mais divertido e organizado. Venha fazer parte!</p>
                 <div class="hero-buttons">
-                    <a href="#sobre" class="btn">Conheça o servidor</a>
-                    <a href="#comandos" class="btn btn-secondary">Comandos úteis</a>
+                    <a href="#recursos" class="btn">Conhecer</a>
+                    <a href="#comandos" class="btn btn-outline">Comandos</a>
                 </div>
-            </div>
-        </section>
-
-        <!-- Sobre -->
-        <section id="sobre">
-            <h2 class="section-title">⚡ Sobre o IG Craft</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto; color: #ccc;">
-                <p style="font-size: 1.2rem;">Um servidor Survival Vanilla sem frescuras, mas cheio de qualidade! Nosso objetivo é trazer a essência do Minecraft com sistemas que facilitam a vida sem perder a dificuldade.</p>
-                <p style="margin-top: 1rem;">Possuímos <strong>RTP</strong> funcionando no Survival, Mundo de Recursos, Nether e The End. Tudo isso com economia própria, loja do servidor, caixas e kits iniciais.</p>
             </div>
         </section>
 
         <!-- Recursos -->
         <section id="recursos">
-            <h2 class="section-title">✨ O que temos no servidor</h2>
+            <h2 class="section-title">✨ O que temos</h2>
             <div class="cards-container">
-                <div class="card"><i class="fas fa-store"></i><h3>Sistema de Loja</h3><p>Compre e venda itens na loja do servidor.</p></div>
-                <div class="card"><i class="fas fa-cubes"></i><h3>Sistema de Caixas</h3><p>Abra caixas e ganhe recompensas incríveis.</p></div>
-                <div class="card"><i class="fas fa-gift"></i><h3>Kits Iniciais</h3><p>Kits para começar com o pé direito.</p></div>
-                <div class="card"><i class="fas fa-crown"></i><h3>Vips</h3><p>Planos especiais para ajudar o servidor.</p></div>
-                <div class="card"><i class="fas fa-compass"></i><h3>RTP em todas as dimensões</h3><p>Survival, Recursos, Nether e The End.</p></div>
-                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos úteis</h3><p>/luz, /homes, /back, /spawn, /shop e mais.</p></div>
+                <div class="card"><i class="fas fa-store"></i><h3>Loja</h3><p>Compra e venda de itens</p></div>
+                <div class="card"><i class="fas fa-cubes"></i><h3>Caixas</h3><p>Sistema de recompensas</p></div>
+                <div class="card"><i class="fas fa-gift"></i><h3>Kits iniciais</h3><p>Para começar bem</p></div>
+                <div class="card"><i class="fas fa-crown"></i><h3>Vips</h3><p>Master e Supremo</p></div>
+                <div class="card"><i class="fas fa-compass"></i><h3>RTP</h3><p>Survival, Recursos, Nether, End</p></div>
+                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos</h3><p>/luz, /homes, /back e mais</p></div>
             </div>
         </section>
 
         <!-- Comandos -->
         <section id="comandos">
-            <h2 class="section-title">📜 Comandos para TODOS</h2>
+            <h2 class="section-title">📜 Comandos para todos</h2>
             <div class="commands-grid">
-                <div class="command-item">/luz</div><div class="command-item">/homes</div><div class="command-item">/back</div>
-                <div class="command-item">/spawn</div><div class="command-item">/shop</div><div class="command-item">/lixeira</div>
-                <div class="command-item">/craft</div><div class="command-item">/rtp</div><div class="command-item">/pwarp</div>
-                <div class="command-item">/tpa</div><div class="command-item">/msg</div><div class="command-item">/kit</div>
-                <div class="command-item">/caixas</div><div class="command-item">/money</div><div class="command-item">/vip</div>
-                <div class="command-item">/help</div>
+                <div class="command-item">/luz</div><div class="command-item">/homes</div>
+                <div class="command-item">/back</div><div class="command-item">/spawn</div>
+                <div class="command-item">/shop</div><div class="command-item">/lixeira</div>
+                <div class="command-item">/craft</div><div class="command-item">/rtp</div>
+                <div class="command-item">/pwarp</div><div class="command-item">/tpa</div>
+                <div class="command-item">/msg</div><div class="command-item">/kit</div>
+                <div class="command-item">/caixas</div><div class="command-item">/money</div>
+                <div class="command-item">/vip</div><div class="command-item">/help</div>
+                <div class="command-item">/discord</div><div class="command-item">/skin</div>
+                <div class="command-item">/troca</div><div class="command-item">/vt</div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; color: var(--ciano);">... e muitos outros!</p>
         </section>
 
-        <!-- Vips - ATUALIZADO: apenas Master (ciano) e Supremo (vermelho) -->
+        <!-- VIPS Detalhados -->
         <section id="vips">
-            <h2 class="section-title">💎 Vips - Ajude a manter o servidor</h2>
+            <h2 class="section-title">💎 Vips</h2>
             <div class="vips-container">
-                <!-- VIP Master - Ciano / R$15,00 -->
+                <!-- VIP Master (ciano) -->
                 <div class="vip-card master">
-                    <h4>VIP Master</h4>
-                    <div class="price">R$ 15,00</div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Kit Master exclusivo</li>
-                        <li><i class="fas fa-check-circle"></i> 8 homes</li>
-                        <li><i class="fas fa-check-circle"></i> /fly no spawn</li>
-                        <li><i class="fas fa-check-circle"></i> Tag colorida [Master]</li>
-                        <li><i class="fas fa-check-circle"></i> Acesso a /hat</li>
-                    </ul>
-                    <a href="#" class="btn">Adquirir</a>
+                    <div class="vip-header">
+                        <h3 style="color: var(--ciano);">VIP Master</h3>
+                        <span class="price">R$ 15,00</span>
+                    </div>
+                    <div class="vip-info-grid">
+                        <div class="info-item"><i class="fas fa-tag"></i> Tag Master (servidor/discord)</div>
+                        <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 5 homes</div>
+                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
+                        <div class="info-item"><i class="fas fa-shield-alt"></i> 2.000 blocos proteção</div>
+                        <div class="info-item"><i class="fas fa-percent"></i> Bônus 7,5% na loja</div>
+                    </div>
+                    <div class="vip-commands">
+                        <h4>Comandos exclusivos</h4>
+                        <div class="cmd-tags">
+                            <span>/echest</span> <span>/craft</span>
+                        </div>
+                    </div>
+                    <div class="vip-bonus">
+                        <h4>Kits</h4>
+                        <div class="kits-container">
+                            <div class="kit-item">
+                                <h5>📆 Diário</h5>
+                                <ul><li>1 Chave VIP</li><li>64 Frascos de XP</li><li>24 Cenouras douradas</li><li>96 Foguetes</li></ul>
+                            </div>
+                            <div class="kit-item">
+                                <h5>📅 Semanal</h5>
+                                <ul><li>Ferramentas de Dima</li><li>Armaduras de Dima</li><li>(sem encantamentos)</li></ul>
+                            </div>
+                            <div class="kit-item">
+                                <h5>📦 Mensal</h5>
+                                <ul><li>Ferramentas Dima (Eficiência 3, Inquebrável 3, Afiação 3)</li><li>Armaduras Dima (Proteção 3, Inquebrável 3)</li><li>1 Élitra (sem encant.)</li><li>64 Cenoura dourada</li><li>128 Frascos de XP</li><li>1 Caixa Shulker</li><li>2000 blocos proteção</li></ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- VIP Supremo - Vermelho / R$25,00 -->
+                <!-- VIP Supremo (vermelho) -->
                 <div class="vip-card supremo">
-                    <h4>VIP Supremo</h4>
-                    <div class="price">R$ 25,00</div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Todos benefícios do Master</li>
-                        <li><i class="fas fa-check-circle"></i> 15 homes</li>
-                        <li><i class="fas fa-check-circle"></i> /fly no survival</li>
-                        <li><i class="fas fa-check-circle"></i> Kit Supremo lendário</li>
-                        <li><i class="fas fa-check-circle"></i> Tag especial [Supremo]</li>
-                        <li><i class="fas fa-check-circle"></i> Acesso a /feed e /heal</li>
-                    </ul>
-                    <a href="#" class="btn">Adquirir</a>
+                    <div class="vip-header">
+                        <h3 style="color: var(--vermelho);">VIP Supremo</h3>
+                        <span class="price">R$ 25,00</span>
+                    </div>
+                    <div class="vip-info-grid">
+                        <div class="info-item"><i class="fas fa-tag"></i> Tag Supremo (servidor/discord)</div>
+                        <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 8 homes</div>
+                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
+                        <div class="info-item"><i class="fas fa-shield-alt"></i> 4.000 blocos proteção</div>
+                        <div class="info-item"><i class="fas fa-percent"></i> Bônus 15% na loja</div>
+                    </div>
+                    <div class="vip-commands">
+                        <h4>Comandos exclusivos</h4>
+                        <div class="cmd-tags">
+                            <span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span>
+                        </div>
+                    </div>
+                    <div class="vip-bonus">
+                        <h4>Kits</h4>
+                        <div class="kits-container">
+                            <div class="kit-item">
+                                <h5>📆 Diário</h5>
+                                <ul><li>2 Chaves VIP</li><li>128 Frascos de XP</li><li>128 Foguetes</li></ul>
+                            </div>
+                            <div class="kit-item">
+                                <h5>📅 Semanal</h5>
+                                <ul><li>Ferramentas Dima (Eficiência 3, Afiação 3, Inquebrável 3)</li><li>Armaduras Dima (Proteção 3, Inquebrável 3)</li></ul>
+                            </div>
+                            <div class="kit-item">
+                                <h5>📦 Mensal</h5>
+                                <ul><li>Ferramentas Dima (Eficiência 5, Inquebrável 3, Afiação 5)</li><li>Armaduras Dima (Proteção 4, Inquebrável 3)</li><li>1 Élitra (sem encant.)</li><li>64 Cenoura dourada</li><li>192 Frascos de XP</li><li>1 Caixa Shulker</li><li>4000 blocos proteção</li></ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; color: #aaa;">* Os Vips ajudam a manter os custos do servidor e garantem benefícios legais :)</p>
         </section>
 
-        <!-- Loja - CORRIGIDO: seção perfeitamente centralizada e alinhada -->
+        <!-- Membros (todos) -->
+        <section id="membros">
+            <h2 class="section-title">👥 Para todos os membros</h2>
+            <ul class="members-features">
+                <li><i class="fas fa-home"></i> 3 homes</li>
+                <li><i class="fas fa-gift"></i> Kit diário e mensal</li>
+                <li><i class="fas fa-shield-virus"></i> Proteção de terreno (GriefPrevention)</li>
+                <li><i class="fas fa-skull"></i> Graves de 3 minutos</li>
+                <li><i class="fas fa-moon"></i> PVP somente à noite</li>
+                <li><i class="fas fa-clock"></i> /vt (votar ciclo do tempo)</li>
+                <li><i class="fas fa-hammer"></i> Anvil sem limite de XP</li>
+                <li><i class="fas fa-store"></i> 1 pwarp</li>
+                <li><i class="fas fa-exchange-alt"></i> /troca (itens, dinheiro, XP)</li>
+                <li><i class="fas fa-ticket-alt"></i> Passe de batalha (comum/premium)</li>
+                <li><i class="fas fa-fist-raised"></i> CombatLog (3 chances)</li>
+                <li><i class="fas fa-comment"></i> [item] [inv] [enderchest] no chat</li>
+                <li><i class="fab fa-discord"></i> /discord com 2FA anti-hack</li>
+                <li><i class="fas fa-paint-roller"></i> /skin (trocar skin)</li>
+                <li><i class="fas fa-gem"></i> Veinmine com encantamento (menos machado)</li>
+                <li><i class="fas fa-villager"></i> Troca rápida de vilager (agachado + direito)</li>
+            </ul>
+        </section>
+
+        <!-- Loja (totalmente alinhada) -->
         <section id="loja">
-            <h2 class="section-title">🛒 Loja do Servidor</h2>
-            <p>Sistema completo de compra e venda de itens. Negocie com outros players ou com o servidor!</p>
-            <a href="#" class="btn btn-secondary" style="margin-bottom: 2rem;">Acessar Loja</a>
-            <div class="loja-destaque">
-                <span><i class="fas fa-diamond"></i> /shop</span>
-                <span><i class="fas fa-coins"></i> /loja</span>
+            <div class="loja-content">
+                <h2 class="section-title" style="margin-bottom:1.5rem;">🛒 Loja do servidor</h2>
+                <p style="font-size:1.3rem; margin-bottom:2rem;">Sistema completo de compra e venda de itens. Negocie com outros players ou com o servidor!</p>
+                <a href="#" class="btn btn-outline" style="font-size:1.2rem;">Acessar Loja</a>
+                <div style="margin-top:2rem; display: flex; gap:2rem; justify-content: center; flex-wrap: wrap;">
+                    <span><i class="fas fa-diamond" style="color:var(--ciano);"></i> /shop</span>
+                    <span><i class="fas fa-coins" style="color:var(--amarelo);"></i> /loja</span>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="logo" style="font-size: 2.2rem;">IG Craft</div>
-            <p style="color: #aaa;">Survival Vanilla com alma de comunidade</p>
-            <div class="footer-links">
-                <a href="#home">Início</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#recursos">Recursos</a>
-                <a href="#comandos">Comandos</a>
-                <a href="#vips">Vips</a>
-                <a href="#loja">Loja</a>
-            </div>
-            <div class="social">
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-            <div class="copy">&copy; 2025 IG Craft. Minecraft é marca registrada da Mojang.</div>
+        <div class="logo" style="font-size:2.2rem;">IG Craft</div>
+        <p style="color:#aaa;">Survival Vanilla com alma de comunidade</p>
+        <div class="footer-links">
+            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#loja">Loja</a>
         </div>
+        <div class="social">
+            <a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="copy">&copy; 2025 IG Craft. Minecraft é marca registrada da Mojang.</div>
     </footer>
 
     <script>
@@ -591,7 +683,7 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                if(target) target.scrollIntoView({behavior:'smooth'});
             });
         });
     </script>

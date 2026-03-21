@@ -708,454 +708,9 @@
             }
             .nav-links .btn-discord {
                 width: 100%;
-                    .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 8vw, 3.8rem);
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .hero h1 span {
-            color: var(--ciano);
-            text-shadow: 0 0 10px var(--ciano);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #bbb;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Seções gerais */
-        section {
-            padding: 4rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            margin-bottom: 3rem;
-            color: #fff;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--amarelo);
-            margin: 0.8rem auto 0;
-            border-radius: 2px;
-            box-shadow: 0 0 12px var(--amarelo);
-        }
-
-        /* Cards recursos */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--roxo);
-            box-shadow: 0 0 30px rgba(155, 77, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 3rem;
-            color: var(--ciano);
-            filter: drop-shadow(0 0 8px var(--ciano));
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: var(--amarelo);
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: #aaa;
-        }
-
-        /* Comandos grid */
-        .commands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.8rem;
-            background: #151515;
-            padding: 2rem;
-            border-radius: 40px;
-            border: 1px solid var(--roxo);
-        }
-
-        .command-item {
-            background: #222;
-            padding: 0.7rem 0.5rem;
-            border-radius: 40px;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            color: var(--ciano);
-            border: 1px solid #444;
-            transition: 0.2s;
-            font-size: 0.95rem;
-        }
-
-        .command-item:hover {
-            background: var(--roxo);
-            color: #000;
-            border-color: var(--amarelo);
-            transform: scale(1.03);
-        }
-
-        /* VIPS - cards detalhados */
-        .vips-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .vip-card {
-            background: #141414;
-            border-radius: 32px;
-            padding: 2rem 1.8rem;
-            width: min(100%, 550px);
-            border: 2px solid;
-            transition: 0.3s;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-        }
-
-        .vip-card.master {
-            border-color: var(--ciano);
-        }
-        .vip-card.supremo {
-            border-color: var(--vermelho);
-        }
-        .vip-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 40px rgba(0,0,0,0.8);
-        }
-        .vip-card.master:hover {
-            border-color: var(--amarelo);
-        }
-        .vip-card.supremo:hover {
-            border-color: var(--amarelo);
-        }
-
-        .vip-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        .vip-header h3 {
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
-        .vip-header .price {
-            font-size: 2rem;
-            font-weight: bold;
-            background: #2a2a2a;
-            padding: 0.4rem 1.2rem;
-            border-radius: 60px;
-        }
-        .master .price {
-            color: var(--ciano);
-            border: 1px solid var(--ciano);
-        }
-        .supremo .price {
-            color: var(--vermelho);
-            border: 1px solid var(--vermelho);
-        }
-
-        .vip-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-            background: #1e1e1e;
-            padding: 1.2rem;
-            border-radius: 24px;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #ccc;
-        }
-        .info-item i {
-            width: 24px;
-            color: var(--amarelo);
-        }
-
-        .vip-commands, .vip-bonus {
-            background: #1a1a1a;
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-        }
-        .vip-commands h4, .vip-bonus h4, .kits-title {
-            color: var(--amarelo);
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-        .cmd-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-        .cmd-tags span {
-            background: #2a2a2a;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-family: monospace;
-            border-left: 3px solid var(--ciano);
-        }
-
-        .kits-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 1rem;
-        }
-        .kit-item {
-            background: #202020;
-            border-radius: 20px;
-            padding: 1rem;
-        }
-        .kit-item h5 {
-            color: var(--ciano);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .kit-item ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1rem;
-        }
-        .kit-item li {
-            background: #2d2d2d;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        /* Seção membros */
-        .members-features {
-            background: #111;
-            border-radius: 50px;
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--roxo);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem 2rem;
-            margin-top: 2rem;
-        }
-        .members-features li {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: #bbb;
-        }
-        .members-features li i {
-            color: var(--ciano);
-            width: 24px;
-        }
-
-        /* Seção de IPs (conexão) - com IPs separados e cópia individual */
-        .ip-section {
-            background: #0f0f0f;
-            border-radius: 60px;
-            padding: 3rem 2rem;
-            margin: 3rem auto;
-            border: 2px solid var(--roxo);
-            box-shadow: 0 0 40px rgba(155, 77, 255, 0.3);
-            text-align: center;
-        }
-        .ip-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        .ip-box {
-            background: #1a1a1a;
-            padding: 2rem 2.5rem;
-            border-radius: 40px;
-            min-width: 280px;
-            border: 1px solid var(--ciano);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-            transition: transform 0.2s;
-        }
-        .ip-box:hover {
-            transform: scale(1.02);
-        }
-        .ip-box h3 {
-            color: var(--amarelo);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .ip-address, .ip-port {
-            font-family: 'Courier New', monospace;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--ciano);
-            background: #000;
-            padding: 0.7rem 1rem;
-            border-radius: 60px;
-            border: 1px solid var(--roxo);
-            word-break: break-all;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            display: inline-block;
-            margin: 0.3rem;
-        }
-        .ip-address:hover, .ip-port:hover {
-            background: var(--roxo);
-            color: #000;
-            border-color: var(--amarelo);
-        }
-        .ip-address.copied, .ip-port.copied {
-            background: var(--amarelo);
-            color: #000;
-            border-color: var(--roxo);
-        }
-        .ip-label {
-            margin-top: 0.8rem;
-            color: #aaa;
-            font-size: 1rem;
-        }
-        .ip-label i {
-            color: var(--amarelo);
-            margin-right: 0.3rem;
-        }
-        .copy-hint {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 0.5rem;
-        }
-        .separator {
-            display: inline-block;
-            font-size: 1.6rem;
-            margin: 0 0.2rem;
-            color: var(--amarelo);
-        }
-
-        /* Footer */
-        footer {
-            background: #070707;
-            padding: 3rem 5% 1.5rem;
-            border-top: 2px solid var(--ciano);
-            text-align: center;
-        }
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1.5rem 0;
-        }
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-        }
-        .footer-links a:hover {
-            color: var(--amarelo);
-        }
-        .social a {
-            color: #5865F2;
-            font-size: 2.5rem;
-            transition: 0.3s;
-        }
-        .social a:hover {
-            color: #4752c4;
-            transform: scale(1.2);
-            display: inline-block;
-        }
-        .copy {
-            color: #444;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -300px;
-                width: 260px;
-                height: 100vh;
-                background: #0f0f0f;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 5rem 1.5rem 2rem;
-                gap: 1.2rem;
-                transition: right 0.3s ease-in-out;
-                z-index: 1001;
-                box-shadow: -5px 0 20px rgba(0,0,0,0.8);
-                border-left: 2px solid var(--roxo);
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 1.2rem;
-                width: 100%;
-                padding: 0.5rem 0;
-                border-bottom: 1px solid #333;
-            }
-
-            .nav-links .btn-discord {
-                width: 100%;
                 justify-content: center;
                 margin-top: 0.5rem;
             }
-
             .close-menu {
                 display: block;
                 position: absolute;
@@ -1189,6 +744,13 @@
                 font-size: 1.1rem;
                 padding: 0.5rem 0.8rem;
             }
+            .toast-message {
+                font-size: 0.9rem;
+                white-space: normal;
+                text-align: center;
+                width: 90%;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -1216,11 +778,11 @@
     </header>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero com nova descrição Vanilla Plus -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1><span>🌎 Survival Vanilla</span><br> IG Craft</h1>
-                <p>Survival raiz com sistemas que deixam tudo mais divertido e organizado. Venha fazer parte!</p>
+                <h1><span>🌎 Vanilla Plus</span><br> IG Craft</h1>
+                <p>Vanilla Plus com ferramentas inteligentes que aprimoram a experiência clássica, mantendo a essência do survival e adicionando praticidade e organização.</p>
                 <div class="hero-buttons">
                     <a href="#recursos" class="btn">Conhecer</a>
                     <a href="#comandos" class="btn btn-outline">Comandos</a>
@@ -1228,7 +790,6 @@
             </div>
         </section>
 
-        <!-- Recursos -->
         <section id="recursos">
             <h2 class="section-title">✨ O que temos</h2>
             <div class="cards-container">
@@ -1237,33 +798,43 @@
                 <div class="card"><i class="fas fa-gift"></i><h3>Kits iniciais</h3><p>Para começar bem</p></div>
                 <div class="card"><i class="fas fa-crown"></i><h3>Vips</h3><p>Master e Supremo</p></div>
                 <div class="card"><i class="fas fa-compass"></i><h3>RTP</h3><p>Survival, Recursos, Nether, End</p></div>
-                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos</h3><p>/luz, /homes, /back e mais</p></div>
+                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos</h3><p>Clique ou passe o mouse para ver a função</p></div>
             </div>
         </section>
 
-        <!-- Comandos -->
+        <!-- Comandos com /sethome adicionado -->
         <section id="comandos">
             <h2 class="section-title">📜 Comandos para todos</h2>
-            <div class="commands-grid">
-                <div class="command-item">/luz</div><div class="command-item">/homes</div>
-                <div class="command-item">/back</div><div class="command-item">/spawn</div>
-                <div class="command-item">/shop</div><div class="command-item">/lixeira</div>
-                <div class="command-item">/craft</div><div class="command-item">/rtp</div>
-                <div class="command-item">/pwarp</div><div class="command-item">/tpa</div>
-                <div class="command-item">/msg</div><div class="command-item">/kit</div>
-                <div class="command-item">/caixas</div><div class="command-item">/money</div>
-                <div class="command-item">/vip</div><div class="command-item">/help</div>
-                <div class="command-item">/discord</div><div class="command-item">/skin</div>
-                <div class="command-item">/troca</div><div class="command-item">/vt</div>
-                <div class="command-item">/bancada</div>
+            <div class="commands-grid" id="commandsGrid">
+                <div class="command-item" data-desc="Alterna o brilho ao redor do jogador (efeito de luz)">/luz</div>
+                <div class="command-item" data-desc="Lista, adiciona ou remove suas casas pessoais">/homes</div>
+                <div class="command-item" data-desc="Define um ponto como sua casa (máximo 3 para membros, mais para VIPs)">/sethome</div>
+                <div class="command-item" data-desc="Teleporta de volta para o último local onde você morreu ou usou /back">/back</div>
+                <div class="command-item" data-desc="Retorna ao spawn principal do servidor">/spawn</div>
+                <div class="command-item" data-desc="Abre a loja do servidor para comprar e vender itens">/shop</div>
+                <div class="command-item" data-desc="Abre uma lixeira virtual para descartar itens permanentemente">/lixeira</div>
+                <div class="command-item" data-desc="Abre uma mesa de trabalho virtual (crafting table)">/craft</div>
+                <div class="command-item" data-desc="Abre um menu para escolher em qual dimensão teleportar aleatoriamente">/rtp</div>
+                <div class="command-item" data-desc="Acessa warp públicos criados por jogadores">/pwarp</div>
+                <div class="command-item" data-desc="Envia um pedido de teleporte para outro jogador">/tpa</div>
+                <div class="command-item" data-desc="Envia uma mensagem privada para outro jogador (mesma função que /msg)">/tell</div>
+                <div class="command-item" data-desc="Resgata os kits disponíveis (diário, mensal, VIP, etc.)">/kit</div>
+                <div class="command-item" data-desc="Teleporta para a warp das caixas no lobby">/caixas</div>
+                <div class="command-item" data-desc="Mostra seu saldo de moedas ou envia para outro jogador">/money</div>
+                <div class="command-item" data-desc="Exibe informações sobre os VIPs e vantagens">/vip</div>
+                <div class="command-item" data-desc="Exibe a lista de comandos disponíveis">/help</div>
+                <div class="command-item" data-desc="Exibe o link do Discord e sincroniza a conta com 2FA">/discord</div>
+                <div class="command-item" data-desc="Altera sua skin do Minecraft (se permitido)">/skin</div>
+                <div class="command-item" data-desc="Abre um menu de troca segura com outro jogador">/troca</div>
+                <div class="command-item" data-desc="Vota para mudar o ciclo do tempo (dia, noite, tarde, madrugada)">/vt</div>
+                <div class="command-item" data-desc="Abre um menu com todas as bancadas (craft, bigorna, etc.)">/bancada</div>
             </div>
         </section>
 
-        <!-- VIPS Detalhados -->
+        <!-- Vips (homes já estão 5 e 8) -->
         <section id="vips">
             <h2 class="section-title">💎 Vips</h2>
             <div class="vips-container">
-                <!-- VIP Master -->
                 <div class="vip-card master">
                     <div class="vip-header">
                         <h3 style="color: var(--ciano);">VIP Master</h3>
@@ -1272,7 +843,7 @@
                     <div class="vip-info-grid">
                         <div class="info-item"><i class="fas fa-tag"></i> Tag Master (servidor/discord)</div>
                         <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
-                        <div class="info-item"><i class="fas fa-home"></i> 5 homes</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 5 homes (via /sethome)</div>
                         <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 2.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 7,5% na loja</div>
@@ -1280,30 +851,10 @@
                     </div>
                     <div class="vip-commands">
                         <h4>Comandos exclusivos</h4>
-                        <div class="cmd-tags">
-                            <span>/echest</span> <span>/craft</span>
-                        </div>
+                        <div class="cmd-tags"><span>/echest</span> <span>/craft</span></div>
                     </div>
-                    <div class="vip-bonus">
-                        <h4>Kits</h4>
-                        <div class="kits-container">
-                            <div class="kit-item">
-                                <h5>📆 Diário</h5>
-                                <ul><li>1 Chave VIP</li><li>64 Frascos de XP</li><li>24 Cenouras douradas</li><li>96 Foguetes</li></ul>
-                            </div>
-                            <div class="kit-item">
-                                <h5>📅 Semanal</h5>
-                                <ul><li>Ferramentas de Diamante</li><li>Armaduras de Diamante</li><li>(sem encantamentos)</li></ul>
-                            </div>
-                            <div class="kit-item">
-                                <h5>📦 Mensal</h5>
-                                <ul><li>Ferramentas Diamante (Eficiência 3, Inquebrável 3, Afiação 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li><li>1 Élitra (sem encant.)</li><li>64 Cenoura dourada</li><li>128 Frascos de XP</li><li>1 Caixa Shulker</li><li>2000 blocos proteção</li></ul>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>1 Chave VIP</li><li>64 Frascos de XP</li><li>24 Cenouras douradas</li><li>96 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas de Diamante</li><li>Armaduras de Diamante</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Inquebrável 3, Afiação 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>128 Frascos de XP</li><li>1 Caixa Shulker</li><li>2000 blocos proteção</li></ul></div></div></div>
                 </div>
-
-                <!-- VIP Supremo -->
                 <div class="vip-card supremo">
                     <div class="vip-header">
                         <h3 style="color: var(--vermelho);">VIP Supremo</h3>
@@ -1312,7 +863,7 @@
                     <div class="vip-info-grid">
                         <div class="info-item"><i class="fas fa-tag"></i> Tag Supremo (servidor/discord)</div>
                         <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
-                        <div class="info-item"><i class="fas fa-home"></i> 8 homes</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 8 homes (via /sethome)</div>
                         <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 4.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 15% na loja</div>
@@ -1320,38 +871,17 @@
                     </div>
                     <div class="vip-commands">
                         <h4>Comandos exclusivos</h4>
-                        <div class="cmd-tags">
-                            <span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span>
-                            <span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span>
-                            <span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span>
-                        </div>
+                        <div class="cmd-tags"><span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span><span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span><span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span></div>
                     </div>
-                    <div class="vip-bonus">
-                        <h4>Kits</h4>
-                        <div class="kits-container">
-                            <div class="kit-item">
-                                <h5>📆 Diário</h5>
-                                <ul><li>2 Chaves VIP</li><li>128 Frascos de XP</li><li>128 Foguetes</li></ul>
-                            </div>
-                            <div class="kit-item">
-                                <h5>📅 Semanal</h5>
-                                <ul><li>Ferramentas Diamante (Eficiência 3, Afiação 3, Inquebrável 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li></ul>
-                            </div>
-                            <div class="kit-item">
-                                <h5>📦 Mensal</h5>
-                                <ul><li>Ferramentas Diamante (Eficiência 5, Inquebrável 3, Afiação 5)</li><li>Armaduras Diamante (Proteção 4, Inquebrável 3)</li><li>1 Élitra (sem encant.)</li><li>64 Cenoura dourada</li><li>192 Frascos de XP</li><li>1 Caixa Shulker</li><li>4000 blocos proteção</li></ul>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>2 Chaves VIP</li><li>128 Frascos de XP</li><li>128 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Afiação 3, Inquebrável 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 5, Inquebrável 3, Afiação 5)</li><li>Armaduras Diamante (Proteção 4, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>192 Frascos de XP</li><li>1 Caixa Shulker</li><li>4000 blocos proteção</li></ul></div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Membros -->
         <section id="membros">
             <h2 class="section-title">👥 Para todos os membros</h2>
             <ul class="members-features">
-                <li><i class="fas fa-home"></i> 3 homes</li>
+                <li><i class="fas fa-home"></i> 3 homes (use /sethome)</li>
                 <li><i class="fas fa-gift"></i> Kit diário e mensal</li>
                 <li><i class="fas fa-shield-virus"></i> Proteção de terreno (GriefPrevention)</li>
                 <li><i class="fas fa-feather"></i> Fly permitido dentro do terreno</li>
@@ -1361,38 +891,29 @@
                 <li><i class="fas fa-hammer"></i> Anvil sem limite de XP</li>
                 <li><i class="fas fa-store"></i> 1 pwarp</li>
                 <li><i class="fas fa-exchange-alt"></i> /troca (itens, dinheiro, XP)</li>
-                <li><i class="fas fa-ticket-alt"></i> Passe de batalha (comum/premium)</li>
-                <li><i class="fas fa-fist-raised"></i> CombatLog (3 chances)</li>
+                <li><i class="fas fa-ticket-alt"></i> Passe de batalha</li>
+                <li><i class="fas fa-fist-raised"></i> CombatLog</li>
                 <li><i class="fas fa-comment"></i> [item] [inv] [enderchest] no chat</li>
-                <li><i class="fab fa-discord"></i> /discord com 2FA anti-hack</li>
-                <li><i class="fas fa-paint-roller"></i> /skin (trocar skin)</li>
-                <li><i class="fas fa-gem"></i> Veinmine com encantamento (menos machado)</li>
-                <li><i class="fas fa-villager"></i> Troca rápida de vilager (agachado + direito)</li>
+                <li><i class="fab fa-discord"></i> /discord com 2FA</li>
+                <li><i class="fas fa-paint-roller"></i> /skin</li>
+                <li><i class="fas fa-gem"></i> Veinmine (menos machado)</li>
+                <li><i class="fas fa-villager"></i> Troca rápida de vilager</li>
             </ul>
         </section>
 
-        <!-- Seção de IPs - Java sem porta e Bedrock com IP e porta separados -->
         <section id="conectar" class="ip-section">
             <h2 class="section-title" style="margin-bottom: 1rem;">🔌 Conecte-se ao servidor</h2>
             <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Use as informações abaixo para entrar no IG Craft. Suportamos Java e Bedrock.</p>
             <div class="ip-container">
-                <!-- Java -->
                 <div class="ip-box">
                     <h3><i class="fas fa-coffee"></i> Java Edition</h3>
-                    <div>
-                        <div class="ip-address" id="ipJava" onclick="copyText('igcraft.com.br', 'ipJava')">igcraft.com.br</div>
-                    </div>
+                    <div><div class="ip-address" id="ipJava" onclick="copyText('igcraft.com.br', 'ipJava')">igcraft.com.br</div></div>
                     <div class="ip-label"><i class="fas fa-gamepad"></i> Versão 1.21.8+</div>
                     <div class="copy-hint">Clique no IP para copiar (não precisa de porta)</div>
                 </div>
-                <!-- Bedrock - IP e porta separados -->
                 <div class="ip-box">
                     <h3><i class="fas fa-mobile-alt"></i> Bedrock Edition</h3>
-                    <div>
-                        <div class="ip-address" id="ipBedrock" onclick="copyText('mc.igcraft.com.br', 'ipBedrock')">mc.igcraft.com.br</div>
-                        <span class="separator">:</span>
-                        <div class="ip-port" id="portBedrock" onclick="copyText('25466', 'portBedrock')">25466</div>
-                    </div>
+                    <div><div class="ip-address" id="ipBedrock" onclick="copyText('mc.igcraft.com.br', 'ipBedrock')">mc.igcraft.com.br</div><span class="separator">:</span><div class="ip-port" id="portBedrock" onclick="copyText('25466', 'portBedrock')">25466</div></div>
                     <div class="ip-label"><i class="fas fa-wifi"></i> Clique no IP ou na porta para copiar individualmente</div>
                     <div class="copy-hint">Endereço completo: mc.igcraft.com.br:25466</div>
                 </div>
@@ -1402,34 +923,83 @@
 
     <footer>
         <div class="logo" style="font-size:2.2rem;">IG Craft</div>
-        <p style="color:#aaa;">Survival Vanilla com alma de comunidade</p>
+        <p style="color:#aaa;">Vanilla Plus com ferramentas inteligentes</p>
         <div class="footer-links">
             <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#conectar">Conectar</a>
         </div>
-        <div class="social">
-            <a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a>
-        </div>
+        <div class="social"><a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a></div>
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
     </footer>
 
     <script>
-        // Função para copiar texto e mostrar feedback
         function copyText(text, elementId) {
             navigator.clipboard.writeText(text).then(() => {
                 const elem = document.getElementById(elementId);
-                const originalText = elem.textContent;
+                const original = elem.textContent;
                 elem.classList.add('copied');
                 elem.textContent = 'Copiado! ✓';
                 setTimeout(() => {
                     elem.classList.remove('copied');
-                    elem.textContent = originalText;
+                    elem.textContent = original;
                 }, 1500);
-            }).catch(err => {
-                alert('Erro ao copiar. Tente manualmente.');
-            });
+            }).catch(() => alert('Erro ao copiar. Tente manualmente.'));
         }
 
-        // Menu mobile
+        (function() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const commands = document.querySelectorAll('.command-item');
+            let activeTooltip = null;
+
+            function showTooltip(text, x, y) {
+                if (activeTooltip) activeTooltip.remove();
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = text;
+                document.body.appendChild(tooltip);
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = (y - 35) + 'px';
+                activeTooltip = tooltip;
+            }
+
+            function hideTooltip() {
+                if (activeTooltip) {
+                    activeTooltip.remove();
+                    activeTooltip = null;
+                }
+            }
+
+            function showToast(message) {
+                document.querySelectorAll('.toast-message').forEach(toast => toast.remove());
+                const toast = document.createElement('div');
+                toast.className = 'toast-message';
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2500);
+            }
+
+            if (!isTouchDevice) {
+                commands.forEach(cmd => {
+                    cmd.addEventListener('mouseenter', (e) => {
+                        const desc = cmd.getAttribute('data-desc');
+                        if (!desc) return;
+                        const rect = cmd.getBoundingClientRect();
+                        showTooltip(desc, rect.left + rect.width/2, rect.top);
+                    });
+                    cmd.addEventListener('mouseleave', hideTooltip);
+                });
+                window.addEventListener('scroll', hideTooltip);
+                window.addEventListener('resize', hideTooltip);
+            } else {
+                commands.forEach(cmd => {
+                    cmd.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const desc = cmd.getAttribute('data-desc');
+                        if (desc) showToast(desc);
+                    });
+                });
+            }
+        })();
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const closeMenu = document.getElementById('closeMenu');
@@ -1440,31 +1010,24 @@
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeMenuFunc() {
             navLinks.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-
         menuToggle.addEventListener('click', openMenu);
         closeMenu.addEventListener('click', closeMenuFunc);
         menuOverlay.addEventListener('click', closeMenuFunc);
-
-        const links = navLinks.querySelectorAll('a:not([target="_blank"])');
-        links.forEach(link => {
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', closeMenuFunc);
         });
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({behavior:'smooth'});
-                    if (navLinks.classList.contains('active')) {
-                        closeMenuFunc();
-                    }
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (navLinks.classList.contains('active')) closeMenuFunc();
                 }
             });
         });

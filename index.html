@@ -552,7 +552,7 @@
         }
         .members-features li i { color: var(--ciano); width: 24px; }
 
-        /* Battle Pass */
+        /* Battle Pass (refinado) */
         .bp-section {
             background: #0f0f0f;
             border-radius: 60px;
@@ -836,6 +836,7 @@
         .social a:hover { color: #4752c4; transform: scale(1.2); display: inline-block; }
         .copy { color: #444; margin-top: 2rem; font-size: 0.9rem; }
 
+        /* Menu mobile com rolagem */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links {
@@ -853,6 +854,7 @@
                 z-index: 1001;
                 box-shadow: -5px 0 20px rgba(0,0,0,0.8);
                 border-left: 2px solid var(--roxo);
+                overflow-y: auto; /* permite rolagem se conteúdo exceder altura */
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 1.2rem; width: 100%; padding: 0.5rem 0; border-bottom: 1px solid #333; }
@@ -1026,12 +1028,12 @@
                 <li><i class="fas fa-comment"></i> [item] [inv] [enderchest] no chat</li>
                 <li><i class="fab fa-discord"></i> /discord com 2FA</li>
                 <li><i class="fas fa-paint-roller"></i> /skin</li>
-                <li><i class="fas fa-gem"></i> Mineração em veio (picareta, machado, enxada)</li>
-                <li><i class="fas fa-handshake"></i> Troca rápida de aldeão</li>
+                <li><i class="fas fa-gem"></i> Mineração em veio (requer encantamento Veinmine)</li>
+                <li><i class="fas fa-handshake"></i> Troca rápida de aldeão (agache + clique direito; no celular, use o botão de interação secundário)</li>
             </ul>
         </section>
 
-        <!-- PASSE DE BATALHA -->
+        <!-- PASSE DE BATALHA (refinado) -->
         <section id="battlepass">
             <h2 class="section-title">🎖️ Passe de Batalha</h2>
             <div class="bp-section">
@@ -1039,15 +1041,15 @@
                     <div class="bp-stat"><i class="fas fa-trophy"></i><span>Níveis</span><strong>1 – 54</strong></div>
                     <div class="bp-stat"><i class="fas fa-chart-line"></i><span>XP por nível</span><strong>500 (fixo)</strong></div>
                     <div class="bp-stat"><i class="fas fa-calendar-day"></i><span>XP diário bônus</span><strong>200 XP</strong></div>
-                    <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (reset às 00:00)</span></div>
+                    <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (veja os horários com /bp)</span></div>
                 </div>
 
                 <div class="bp-rewards">
                     <div class="reward-card comum">
                         <h3><i class="fas fa-star"></i> Comum (grátis)</h3>
                         <ul>
-                            <li><i class="fas fa-coins"></i> Dinheiro + itens simples (carvão, cobre, ferro)</li>
-                            <li><i class="fas fa-gem"></i> Nas fases finais: Netherite, Totem da Imortalidade</li>
+                            <li><i class="fas fa-coins"></i> Dinheiro + itens gerais</li>
+                            <li><i class="fas fa-gem"></i> Nas fases finais: recursos valiosos</li>
                             <li><i class="fas fa-crown"></i> Nível 54: 30.000 dinheiro, 2 Nether Star, 2 Netherite Upgrade, 1 Mace, título 30 dias + /say global</li>
                         </ul>
                     </div>
@@ -1059,9 +1061,9 @@
                             <span class="btn-outline" style="font-size:0.9rem; padding:0.2rem 1rem;">250 moedas</span>
                         </div>
                         <ul>
-                            <li><i class="fas fa-coins"></i> Dinheiro extra + itens raros (diamante, netherite, livros encantados)</li>
-                            <li><i class="fas fa-box"></i> Shulker boxes, Nether Stars, barras de netherite</li>
-                            <li><i class="fas fa-crown"></i> Nível 54: 100.000 dinheiro, título 30 dias + /say global, itens exclusivos</li>
+                            <li><i class="fas fa-coins"></i> Dinheiro extra + itens raros</li>
+                            <li><i class="fas fa-box"></i> Itens exclusivos e recursos avançados</li>
+                            <li><i class="fas fa-crown"></i> Nível 54: 100.000 dinheiro, título 30 dias + /say global, recompensas especiais</li>
                         </ul>
                     </div>
                 </div>
@@ -1091,7 +1093,7 @@
                     <div class="bp-shop-item"><span class="name">3.200 XP</span><br><span class="price">380</span> moedas</div>
                     <div class="bp-shop-item"><span class="name">6.400 XP</span><br><span class="price">700</span> moedas</div>
                 </div>
-                <p style="text-align: center; color: #aaa; margin-top: 1rem;"><i class="fas fa-info-circle"></i> Missões diárias resetam às 00:00 (horário de Brasília).</p>
+                <p style="text-align: center; color: #aaa; margin-top: 1rem;"><i class="fas fa-info-circle"></i> Use o comando <strong>/bp</strong> dentro do jogo para ver os horários exatos de reset das missões e da distribuição de pontos.</p>
             </div>
         </section>
 

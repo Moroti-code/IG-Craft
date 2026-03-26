@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="logo.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== ESTILOS COMPLETOS (mantidos os anteriores) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -232,6 +233,68 @@
             flex-wrap: wrap;
         }
 
+        .ip-simple {
+            background: #0f0f0fcc;
+            backdrop-filter: blur(8px);
+            border-radius: 80px;
+            margin: 1rem 5% 2rem;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            border: 1px solid var(--ciano);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        }
+        .ip-simple-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #1a1a1a;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+        }
+        .ip-simple-item i {
+            color: var(--amarelo);
+            font-size: 1.2rem;
+        }
+        .ip-simple-item .ip-code {
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--ciano);
+            cursor: pointer;
+            padding: 0.2rem 0.6rem;
+            border-radius: 40px;
+            transition: background 0.2s;
+        }
+        .ip-simple-item .ip-code:hover {
+            background: var(--roxo);
+            color: #000;
+        }
+        .ip-simple-item .ip-code.copied {
+            background: var(--amarelo);
+            color: #000;
+        }
+        .ip-simple-label {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        /* status online/offline no topo */
+        .status-top {
+            background: #1a1a1a;
+            border-radius: 60px;
+            padding: 0.4rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+        }
+        .status-top i {
+            font-size: 1rem;
+        }
+        .status-online-text { color: #4caf50; }
+        .status-offline-text { color: #f44336; }
+
         section {
             padding: 4rem 5%;
             max-width: 1400px;
@@ -420,6 +483,16 @@
             color: #ccc;
         }
         .info-item i { width: 24px; color: var(--amarelo); }
+        .info-item .gif-ref {
+            margin-left: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        .info-item .gif-ref img {
+            max-height: 20px;
+            width: auto;
+            cursor: pointer;
+        }
         .vip-commands, .vip-bonus {
             background: #1a1a1a;
             padding: 1rem 1.5rem;
@@ -483,6 +556,65 @@
             color: #bbb;
         }
         .members-features li i { color: var(--ciano); width: 24px; }
+
+        /* NOVAS SEÇÕES */
+        .battlepass-card, .status-card, .gallery-container {
+            background: #0f0f0f;
+            border-radius: 40px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid var(--roxo);
+            text-align: center;
+        }
+        .status-card {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .status-online { color: #4caf50; }
+        .status-offline { color: #f44336; }
+        .players-count { font-size: 1.5rem; font-weight: bold; color: var(--amarelo); }
+        .motd { font-family: monospace; background: #1a1a1a; display: inline-block; padding: 0.2rem 1rem; border-radius: 30px; margin-top: 0.5rem; }
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .gallery-item {
+            max-width: 300px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid var(--roxo);
+            transition: transform 0.3s;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--amarelo);
+        }
+        .btn-discord-purchase {
+            background: #5865F2;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+        .btn-discord-purchase:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
 
         .ip-section {
             background: #0f0f0f;
@@ -581,6 +713,7 @@
             .nav-links a { font-size: 1.2rem; width: 100%; padding: 0.5rem 0; border-bottom: 1px solid #333; }
             .nav-links .btn-discord { width: 100%; justify-content: center; margin-top: 0.5rem; }
             .close-menu { display: block; position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--amarelo); background: none; border: none; cursor: pointer; }
+            .ip-simple { flex-direction: column; align-items: center; gap: 0.8rem; }
         }
         @media (min-width: 769px) { .close-menu { display: none !important; } }
         @media (max-width: 480px) {
@@ -604,6 +737,9 @@
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
                 <a href="#membros">Membros</a>
+                <a href="#battlepass">Passe</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#status">Status</a>
                 <a href="#conectar">Conectar</a>
                 <a href="https://discord.gg/TmRHhzZSqQ" class="btn-discord" target="_blank"><i class="fab fa-discord"></i> Discord</a>
             </nav>
@@ -622,6 +758,24 @@
                 </div>
             </div>
         </section>
+
+        <!-- IP simplificado + status no topo -->
+        <div class="ip-simple">
+            <div class="ip-simple-item">
+                <i class="fas fa-coffee"></i>
+                <span class="ip-code" id="simpleJava" onclick="copySimpleIP('igcraft.com.br', 'simpleJava')">igcraft.com.br</span>
+                <span class="ip-simple-label">Java 1.21.8+</span>
+            </div>
+            <div class="ip-simple-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span class="ip-code" id="simpleBedrock" onclick="copySimpleIP('mc.igcraft.com.br:25466', 'simpleBedrock')">mc.igcraft.com.br:25466</span>
+                <span class="ip-simple-label">Bedrock</span>
+            </div>
+            <div class="ip-simple-item" id="topStatusContainer">
+                <i class="fas fa-server"></i>
+                <span id="topStatusText" class="status-top">Carregando...</span>
+            </div>
+        </div>
 
         <section id="recursos">
             <h2 class="section-title">✨ O que temos</h2>
@@ -677,13 +831,14 @@
                         <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 2.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 7,5% na loja</div>
-                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos</div>
+                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos<span class="gif-ref" id="xpGifMaster"></span></div>
                     </div>
                     <div class="vip-commands">
                         <h4>Comandos exclusivos</h4>
                         <div class="cmd-tags"><span>/echest</span> <span>/craft</span></div>
                     </div>
                     <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>1 Chave VIP</li><li>64 Frascos de XP</li><li>24 Cenouras douradas</li><li>96 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas de Diamante</li><li>Armaduras de Diamante</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Inquebrável 3, Afiação 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>128 Frascos de XP</li><li>1 Caixa Shulker</li><li>2000 blocos proteção</li></ul></div></div></div>
+                    <a href="https://discord.gg/TmRHhzZSqQ" target="_blank" class="btn-discord-purchase"><i class="fab fa-discord"></i> Adquirir pelo Discord</a>
                 </div>
                 <div class="vip-card supremo">
                     <div class="vip-header">
@@ -697,13 +852,14 @@
                         <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 4.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 15% na loja</div>
-                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos</div>
+                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos<span class="gif-ref" id="xpGifSupremo"></span></div>
                     </div>
                     <div class="vip-commands">
                         <h4>Comandos exclusivos</h4>
                         <div class="cmd-tags"><span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span><span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span><span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span></div>
                     </div>
                     <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>2 Chaves VIP</li><li>128 Frascos de XP</li><li>128 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Afiação 3, Inquebrável 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 5, Inquebrável 3, Afiação 5)</li><li>Armaduras Diamante (Proteção 4, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>192 Frascos de XP</li><li>1 Caixa Shulker</li><li>4000 blocos proteção</li></ul></div></div></div>
+                    <a href="https://discord.gg/TmRHhzZSqQ" target="_blank" class="btn-discord-purchase"><i class="fab fa-discord"></i> Adquirir pelo Discord</a>
                 </div>
             </div>
         </section>
@@ -714,21 +870,55 @@
                 <li><i class="fas fa-home"></i> 3 homes (use /sethome)</li>
                 <li><i class="fas fa-gift"></i> Kit diário e mensal</li>
                 <li><i class="fas fa-shield-virus"></i> Proteção de terreno (GriefPrevention)</li>
-                <li><i class="fas fa-feather"></i> Fly permitido dentro do terreno</li>
-                <li><i class="fas fa-skull"></i> Graves de 3 minutos</li>
+                <li><i class="fas fa-feather"></i> Voo permitido dentro do terreno</li>
+                <li><i class="fas fa-skull"></i> Túmulos para recuperar itens</li>
                 <li><i class="fas fa-moon"></i> PVP somente à noite</li>
                 <li><i class="fas fa-clock"></i> /vt (votar ciclo do tempo)</li>
-                <li><i class="fas fa-hammer"></i> Anvil sem limite de XP</li>
+                <li><i class="fas fa-hammer"></i> Bigorna sem limite de XP</li>
                 <li><i class="fas fa-store"></i> 1 pwarp</li>
                 <li><i class="fas fa-exchange-alt"></i> /troca (itens, dinheiro, XP)</li>
                 <li><i class="fas fa-ticket-alt"></i> Passe de batalha</li>
-                <li><i class="fas fa-fist-raised"></i> CombatLog</li>
+                <li><i class="fas fa-fist-raised"></i> Sistema anti-fuga (bloqueia teleportes e pune desconexão em PvP)</li>
                 <li><i class="fas fa-comment"></i> [item] [inv] [enderchest] no chat</li>
                 <li><i class="fab fa-discord"></i> /discord com 2FA</li>
                 <li><i class="fas fa-paint-roller"></i> /skin</li>
-                <li><i class="fas fa-gem"></i> Veinmine para picareta, machado e enxada</li> <!-- ATUALIZADO -->
-                <li><i class="fas fa-handshake"></i> Troca rápida de vilager</li>
+                <li><i class="fas fa-gem"></i> Mineração em veio (picareta, machado, enxada)</li>
+                <li><i class="fas fa-handshake"></i> Troca rápida de aldeão</li>
             </ul>
+        </section>
+
+        <section id="battlepass">
+            <h2 class="section-title">🎖️ Passe de Batalha</h2>
+            <div class="battlepass-card">
+                <i class="fas fa-ticket-alt" style="font-size: 3rem; color: var(--ciano); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--amarelo);">Em breve mais informações!</h3>
+                <p style="margin-top: 0.5rem;">O Passe de Batalha oferece recompensas exclusivas para quem deseja turbinar sua jornada no servidor.</p>
+                <p><strong>Premium: R$ 30,00</strong> (desbloqueia recompensas especiais)</p>
+                <p style="font-size: 0.9rem; color: #aaa;">Fique ligado no Discord para mais detalhes em breve!</p>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2 class="section-title">📸 Galeria</h2>
+            <div class="gallery-container">
+                <div class="gallery-grid" id="galleryGrid"></div>
+                <p style="color: #888; margin-top: 1rem;">Imagens em breve. (Adicione seus prints com os nomes screenshot1.jpg, screenshot2.jpg, screenshot3.jpg)</p>
+            </div>
+        </section>
+
+        <section id="status">
+            <h2 class="section-title">🖥️ Status do Servidor</h2>
+            <div class="status-card" id="statusCard">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                    <i class="fas fa-server" style="font-size: 2rem;"></i>
+                    <div>
+                        <div id="statusText" style="font-size: 1.5rem;">Carregando...</div>
+                        <div id="playersInfo" style="font-size: 1.2rem;"></div>
+                        <div id="motdInfo" style="font-size: 0.9rem;"></div>
+                    </div>
+                </div>
+                <div id="versionInfo" style="margin-top: 0.5rem;"></div>
+            </div>
         </section>
 
         <section id="conectar" class="ip-section">
@@ -755,7 +945,7 @@
         <div class="logo" style="font-size:2.2rem;">IG Craft</div>
         <p style="color:#aaa;">Vanilla Plus com ferramentas inteligentes</p>
         <div class="footer-links">
-            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#conectar">Conectar</a>
+            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#battlepass">Passe</a><a href="#galeria">Galeria</a><a href="#status">Status</a><a href="#conectar">Conectar</a>
         </div>
         <div class="social"><a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a></div>
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
@@ -775,6 +965,105 @@
             }).catch(() => alert('Erro ao copiar. Tente manualmente.'));
         }
 
+        function copySimpleIP(text, elementId) {
+            navigator.clipboard.writeText(text).then(() => {
+                const elem = document.getElementById(elementId);
+                const original = elem.textContent;
+                elem.classList.add('copied');
+                elem.textContent = 'Copiado! ✓';
+                setTimeout(() => {
+                    elem.classList.remove('copied');
+                    elem.textContent = original;
+                }, 1500);
+            }).catch(() => alert('Erro ao copiar.'));
+        }
+
+        // GIF de referência
+        function tryLoadGif(containerId, gifPath) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const img = new Image();
+            img.onload = function() {
+                const imgElement = document.createElement('img');
+                imgElement.src = gifPath;
+                imgElement.alt = "Converter XP";
+                imgElement.style.maxHeight = "20px";
+                imgElement.style.width = "auto";
+                imgElement.style.marginLeft = "6px";
+                imgElement.style.cursor = "pointer";
+                imgElement.title = "Converter XP em frascos";
+                container.appendChild(imgElement);
+            };
+            img.onerror = function() { };
+            img.src = gifPath;
+        }
+
+        tryLoadGif('xpGifMaster', 'xp-converter.gif');
+        tryLoadGif('xpGifSupremo', 'xp-converter.gif');
+
+        // Galeria com detecção de imagens
+        const imageNames = ['screenshot1.jpg', 'screenshot2.jpg', 'screenshot3.jpg'];
+        const galleryGrid = document.getElementById('galleryGrid');
+        imageNames.forEach(imgName => {
+            const img = new Image();
+            img.onload = function() {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                const imgElem = document.createElement('img');
+                imgElem.src = imgName;
+                imgElem.alt = `Screenshot do servidor`;
+                div.appendChild(imgElem);
+                galleryGrid.appendChild(div);
+            };
+            img.onerror = function() { };
+            img.src = imgName;
+        });
+
+        // Status do servidor - atualiza tanto o card quanto o topo
+        async function fetchServerStatus() {
+            try {
+                const response = await fetch('https://api.mcsrvstat.us/2/igcraft.com.br');
+                const data = await response.json();
+                // Card detalhado
+                const statusDiv = document.getElementById('statusText');
+                const playersDiv = document.getElementById('playersInfo');
+                const motdDiv = document.getElementById('motdInfo');
+                const versionDiv = document.getElementById('versionInfo');
+                // Topo
+                const topStatusSpan = document.getElementById('topStatusText');
+                if (data.online) {
+                    statusDiv.innerHTML = '<span class="status-online"><i class="fas fa-check-circle"></i> Online</span>';
+                    topStatusSpan.innerHTML = '<span class="status-online-text"><i class="fas fa-check-circle"></i> Online</span>';
+                    const players = data.players.online;
+                    const maxPlayers = data.players.max;
+                    playersDiv.innerHTML = `<span class="players-count">${players}/${maxPlayers}</span> jogadores online`;
+                    if (data.motd && data.motd.clean && data.motd.clean.length) {
+                        motdDiv.innerHTML = `<div class="motd">${data.motd.clean.join(' ')}</div>`;
+                    } else {
+                        motdDiv.innerHTML = '';
+                    }
+                    if (data.version) {
+                        versionDiv.innerHTML = `Versão: ${data.version}`;
+                    } else {
+                        versionDiv.innerHTML = '';
+                    }
+                } else {
+                    statusDiv.innerHTML = '<span class="status-offline"><i class="fas fa-times-circle"></i> Offline</span>';
+                    topStatusSpan.innerHTML = '<span class="status-offline-text"><i class="fas fa-times-circle"></i> Offline</span>';
+                    playersDiv.innerHTML = '';
+                    motdDiv.innerHTML = '';
+                    versionDiv.innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Erro ao buscar status:', error);
+                document.getElementById('statusText').innerHTML = '<span class="status-offline">Não foi possível verificar</span>';
+                document.getElementById('topStatusText').innerHTML = '<span class="status-offline-text">Erro</span>';
+            }
+        }
+        fetchServerStatus();
+        setInterval(fetchServerStatus, 60000); // atualiza a cada minuto
+
+        // Tooltips
         (function() {
             const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             const commands = document.querySelectorAll('.command-item');
@@ -830,6 +1119,7 @@
             }
         })();
 
+        // Menu mobile
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const closeMenu = document.getElementById('closeMenu');

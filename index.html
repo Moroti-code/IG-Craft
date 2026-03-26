@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== ESTILOS COMPLETOS (mesmos anteriores, com ajustes para o carrossel) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -553,12 +552,11 @@
         }
         .members-features li i { color: var(--ciano); width: 24px; }
 
-        /* Battle Pass Styles (mantidos) */
-        .battlepass-section {
+        /* Battle Pass */
+        .bp-section {
             background: #0f0f0f;
             border-radius: 60px;
-            padding: 2.5rem;
-            margin: 2rem 0;
+            padding: 2rem;
             border: 1px solid var(--roxo);
         }
         .bp-stats {
@@ -580,32 +578,40 @@
         .bp-stat i { font-size: 2rem; color: var(--amarelo); margin-bottom: 0.5rem; display: block; }
         .bp-stat span { font-size: 1.2rem; color: #ddd; }
         .bp-stat strong { font-size: 1.6rem; color: var(--ciano); display: block; margin-top: 0.3rem; }
-        .bp-table {
-            background: #141414;
-            border-radius: 40px;
-            overflow-x: auto;
+        .bp-rewards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
-        .bp-table table {
-            width: 100%;
-            border-collapse: collapse;
+        .reward-card {
+            background: #1a1a1a;
+            border-radius: 32px;
+            padding: 1.5rem;
             text-align: center;
         }
-        .bp-table th, .bp-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #333;
+        .reward-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
         }
-        .bp-table th {
-            background: #2a2a2a;
-            color: var(--amarelo);
-            font-weight: bold;
+        .reward-card.comum h3 { color: var(--ciano); }
+        .reward-card.premium h3 { color: var(--amarelo); }
+        .reward-card ul {
+            list-style: none;
+            margin-top: 1rem;
+            text-align: left;
+            padding-left: 1rem;
         }
-        .bp-table tr:hover td {
-            background: #1e1e1e;
+        .reward-card li {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        .reward-card li i { width: 24px; color: var(--amarelo); }
         .bp-shop {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin: 2rem 0;
         }
@@ -616,35 +622,15 @@
             text-align: center;
             border-left: 4px solid var(--ciano);
         }
-        .bp-shop-item .price {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--amarelo);
-        }
-        .bp-shop-item .name {
-            font-weight: bold;
-            color: #fff;
-        }
-        .bp-premium-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #f9b700, #f9d423);
-            color: #000;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-left: 0.5rem;
-        }
+        .bp-shop-item .price { font-size: 1.4rem; font-weight: bold; color: var(--amarelo); }
+        .bp-shop-item .name { font-weight: bold; color: #fff; }
         .bp-ranking {
             background: #1a1a1a;
             border-radius: 40px;
             padding: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
-        .bp-ranking h4 {
-            color: var(--amarelo);
-            margin-bottom: 1rem;
-        }
+        .bp-ranking h4 { color: var(--amarelo); margin-bottom: 1rem; }
         .bp-ranking-grid {
             display: flex;
             flex-wrap: wrap;
@@ -658,7 +644,7 @@
             font-size: 0.9rem;
         }
 
-        /* ========== CARROSSEL ========== */
+        /* Carrossel */
         .carousel-container {
             background: #0f0f0f;
             border-radius: 60px;
@@ -723,12 +709,8 @@
             background: var(--roxo);
             color: #000;
         }
-        .carousel-button.prev {
-            left: 10px;
-        }
-        .carousel-button.next {
-            right: 10px;
-        }
+        .carousel-button.prev { left: 10px; }
+        .carousel-button.next { right: 10px; }
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -747,17 +729,8 @@
             background: var(--amarelo);
             box-shadow: 0 0 8px var(--amarelo);
         }
-        @media (max-width: 768px) {
-            .carousel-button {
-                font-size: 1.5rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .carousel-caption {
-                font-size: 0.8rem;
-                padding: 0.5rem;
-            }
-        }
 
+        /* Status Card (sem MOTD) */
         .status-card {
             background: #0f0f0f;
             border-radius: 60px;
@@ -769,7 +742,6 @@
         .status-online { color: #4caf50; }
         .status-offline { color: #f44336; }
         .players-count { font-size: 1.5rem; font-weight: bold; color: var(--amarelo); }
-        .motd { font-family: monospace; background: #1a1a1a; display: inline-block; padding: 0.2rem 1rem; border-radius: 30px; margin-top: 0.5rem; }
 
         .btn-discord-purchase {
             background: #5865F2;
@@ -887,7 +859,6 @@
             .nav-links .btn-discord { width: 100%; justify-content: center; margin-top: 0.5rem; }
             .close-menu { display: block; position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--amarelo); background: none; border: none; cursor: pointer; }
             .ip-simple { flex-direction: column; align-items: center; gap: 0.8rem; }
-            .bp-stats { flex-direction: column; align-items: center; }
         }
         @media (min-width: 769px) { .close-menu { display: none !important; } }
         @media (max-width: 480px) {
@@ -896,7 +867,6 @@
             .ip-box { width: 100%; }
             .ip-address, .ip-port { font-size: 1.1rem; padding: 0.5rem 0.8rem; }
             .toast-message { font-size: 0.9rem; white-space: normal; width: 90%; max-width: 280px; }
-            .bp-table td, .bp-table th { padding: 0.5rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -1043,7 +1013,7 @@
             <ul class="members-features">
                 <li><i class="fas fa-home"></i> 3 homes (use /sethome)</li>
                 <li><i class="fas fa-gift"></i> Kit diário e mensal</li>
-                <li><i class="fas fa-shield-virus"></i> Proteção de terreno (GriefPrevention)</li>
+                <li><i class="fas fa-shield-virus"></i> Proteção de terreno</li>
                 <li><i class="fas fa-feather"></i> Voo permitido dentro do terreno</li>
                 <li><i class="fas fa-skull"></i> Túmulos para recuperar itens</li>
                 <li><i class="fas fa-moon"></i> PVP somente à noite</li>
@@ -1061,38 +1031,41 @@
             </ul>
         </section>
 
-        <!-- PASSE DE BATALHA (idêntico ao anterior) -->
+        <!-- PASSE DE BATALHA -->
         <section id="battlepass">
             <h2 class="section-title">🎖️ Passe de Batalha</h2>
-            <div class="battlepass-section">
+            <div class="bp-section">
                 <div class="bp-stats">
                     <div class="bp-stat"><i class="fas fa-trophy"></i><span>Níveis</span><strong>1 – 54</strong></div>
                     <div class="bp-stat"><i class="fas fa-chart-line"></i><span>XP por nível</span><strong>500 (fixo)</strong></div>
                     <div class="bp-stat"><i class="fas fa-calendar-day"></i><span>XP diário bônus</span><strong>200 XP</strong></div>
                     <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (reset às 00:00)</span></div>
                 </div>
-                <div class="bp-table">
-                     <table>
-                        <thead>
-                            <tr><th>Nível</th><th>Comum (Gratuito)</th><th>Premium <span class="bp-premium-badge">250 moedas</span></th> </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Terminados em 5</td><td>300 dinheiro</td><td>450 dinheiro + itens especiais</td> </tr>
-                            <tr><td>Terminados em 0</td><td>500 dinheiro</td><td>750 dinheiro + itens especiais</td> </tr>
-                            <tr><td>Demais níveis</td><td>150 dinheiro</td><td>225 dinheiro + itens variados</td> </tr>
-                        </tbody>
-                     </table>
-                </div>
-                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 2rem 0;">
-                    <div class="bp-stat" style="background: #141414; flex:1; min-width: 200px;">
-                        <i class="fas fa-star"></i><span>Comum - Nível 54</span>
-                        <strong>2 Nether Star + 2 Netherite Upgrade<br>30.000 dinheiro + 1 Mace<br>Título (30 dias) + /say global</strong>
+
+                <div class="bp-rewards">
+                    <div class="reward-card comum">
+                        <h3><i class="fas fa-star"></i> Comum (grátis)</h3>
+                        <ul>
+                            <li><i class="fas fa-coins"></i> Dinheiro + itens simples (carvão, cobre, ferro)</li>
+                            <li><i class="fas fa-gem"></i> Nas fases finais: Netherite, Totem da Imortalidade</li>
+                            <li><i class="fas fa-crown"></i> Nível 54: 30.000 dinheiro, 2 Nether Star, 2 Netherite Upgrade, 1 Mace, título 30 dias + /say global</li>
+                        </ul>
                     </div>
-                    <div class="bp-stat" style="background: #141414; flex:1; min-width: 200px;">
-                        <i class="fas fa-crown"></i><span>Premium - Nível 54</span>
-                        <strong>100.000 dinheiro<br>Título (30 dias) + /say global<br>Itens exclusivos extras</strong>
+                    <div class="reward-card premium">
+                        <h3><i class="fas fa-crown"></i> Premium</h3>
+                        <div style="margin-bottom: 0.5rem;">
+                            <span class="btn-outline" style="font-size:0.9rem; padding:0.2rem 1rem;">R$ 30,00</span>
+                            <span style="margin:0 0.5rem">ou</span>
+                            <span class="btn-outline" style="font-size:0.9rem; padding:0.2rem 1rem;">250 moedas</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-coins"></i> Dinheiro extra + itens raros (diamante, netherite, livros encantados)</li>
+                            <li><i class="fas fa-box"></i> Shulker boxes, Nether Stars, barras de netherite</li>
+                            <li><i class="fas fa-crown"></i> Nível 54: 100.000 dinheiro, título 30 dias + /say global, itens exclusivos</li>
+                        </ul>
                     </div>
                 </div>
+
                 <div class="bp-ranking">
                     <h4><i class="fas fa-chart-simple"></i> Ranking Diário (Top 10)</h4>
                     <div class="bp-ranking-grid">
@@ -1101,6 +1074,7 @@
                         <div class="rank-item">7º: 4 moedas</div><div class="rank-item">8º: 3 moedas</div><div class="rank-item">9º: 2 moedas</div><div class="rank-item">10º: 2 moedas</div>
                     </div>
                 </div>
+
                 <h3 style="color: var(--amarelo); margin: 2rem 0 1rem; text-align: center;">🛒 Loja do Passe (moedas)</h3>
                 <div class="bp-shop">
                     <div class="bp-shop-item"><span class="name">Passe Premium</span><br><span class="price">250</span> moedas</div>
@@ -1108,6 +1082,7 @@
                     <div class="bp-shop-item"><span class="name">Item-moeda negociável</span><br><span class="price">10 pontos → 10</span> moedas (mínimo)</div>
                     <div class="bp-shop-item"><span class="name">Ativação XP dobrado (1h global)</span><br><span class="price">500</span> moedas</div>
                 </div>
+
                 <h3 style="color: var(--amarelo); margin: 1rem 0; text-align: center;">⚡ Comprar XP do Passe</h3>
                 <div class="bp-shop">
                     <div class="bp-shop-item"><span class="name">100 XP</span><br><span class="price">15</span> moedas</div>
@@ -1116,11 +1091,11 @@
                     <div class="bp-shop-item"><span class="name">3.200 XP</span><br><span class="price">380</span> moedas</div>
                     <div class="bp-shop-item"><span class="name">6.400 XP</span><br><span class="price">700</span> moedas</div>
                 </div>
-                <p style="text-align: center; color: #aaa; margin-top: 1.5rem;"><i class="fas fa-info-circle"></i> Missões diárias resetam às 00:00 (horário de Brasília). Passeie o mouse sobre o ícone das missões para ver o horário exato.</p>
+                <p style="text-align: center; color: #aaa; margin-top: 1rem;"><i class="fas fa-info-circle"></i> Missões diárias resetam às 00:00 (horário de Brasília).</p>
             </div>
         </section>
 
-        <!-- GALERIA EM CARROSSEL COM ROTAÇÃO AUTOMÁTICA E DESCRIÇÕES COMPLETAS -->
+        <!-- GALERIA -->
         <section id="galeria">
             <h2 class="section-title">📸 Galeria</h2>
             <div class="carousel-container">
@@ -1135,7 +1110,7 @@
             </div>
         </section>
 
-        <!-- STATUS DO SERVIDOR -->
+        <!-- STATUS (sem MOTD) -->
         <section id="status">
             <h2 class="section-title">🖥️ Status do Servidor</h2>
             <div class="status-card" id="statusCard">
@@ -1144,7 +1119,6 @@
                     <div>
                         <div id="statusText" style="font-size: 1.5rem;">Carregando...</div>
                         <div id="playersInfo" style="font-size: 1.2rem;"></div>
-                        <div id="motdInfo" style="font-size: 0.9rem;"></div>
                     </div>
                 </div>
                 <div id="versionInfo" style="margin-top: 0.5rem;"></div>
@@ -1182,7 +1156,6 @@
     </footer>
 
     <script>
-        // Funções de cópia e GIF (mantidas)
         function copyText(text, elementId) {
             navigator.clipboard.writeText(text).then(() => {
                 const elem = document.getElementById(elementId);
@@ -1230,10 +1203,10 @@
         tryLoadGif('xpGifMaster', 'xp-converter.gif');
         tryLoadGif('xpGifSupremo', 'xp-converter.gif');
 
-        // Carrossel com descrições completas e rotação automática
+        // Carrossel
         const images = [
             { src: 'Spawn.png', desc: 'Visão superior do Spawn – área principal da loja e entrada.' },
-            { src: 'Npcsdeteleporte.png', desc: 'NPCs de teleporte: The End, Eventos, Nether, Recursos, Sobrevivência, Arena PvP, e Spawner SmartSpawners.' },
+            { src: 'Npcsdeteleporte.png', desc: 'NPCs de teleporte: The End, Eventos, Nether, Recursos, Sobrevivência, Arena PvP, e spawners personalizados.' },
             { src: 'CaixasAleatorias.png', desc: 'Caixas Comum e VIP – recompensas obtidas via kit diário.' },
             { src: 'ArenaPvP.png', desc: 'Arena PvP – sempre noite e PvP sempre ativo.' },
             { src: 'NpcsPantacaoComida.png', desc: 'NPCs Comida e Plantação – atalhos para as seções correspondentes no /shop.' }
@@ -1248,21 +1221,19 @@
             slidesContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
             images.forEach((img, i) => {
-                // Slide
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'carousel-slide';
                 const imgElem = document.createElement('img');
                 imgElem.src = img.src;
                 imgElem.alt = img.desc;
-                imgElem.title = img.desc; // tooltip para desktop
+                imgElem.title = img.desc;
                 const caption = document.createElement('div');
                 caption.className = 'carousel-caption';
-                caption.textContent = img.desc; // texto completo
+                caption.textContent = img.desc;
                 slideDiv.appendChild(imgElem);
                 slideDiv.appendChild(caption);
                 slidesContainer.appendChild(slideDiv);
 
-                // Dot
                 const dot = document.createElement('div');
                 dot.className = 'carousel-dot';
                 dot.addEventListener('click', () => {
@@ -1278,7 +1249,6 @@
         function updateCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
             if (slides.length === 0) return;
-            const width = slides[0].clientWidth;
             slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             const dots = document.querySelectorAll('.carousel-dot');
             dots.forEach((dot, i) => {
@@ -1299,48 +1269,30 @@
 
         function startAutoSlide() {
             if (autoSlideInterval) clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000); // 5 segundos
+            autoSlideInterval = setInterval(() => nextSlide(), 5000);
         }
+        function stopAutoSlide() { if (autoSlideInterval) clearInterval(autoSlideInterval); }
 
-        function stopAutoSlide() {
-            if (autoSlideInterval) clearInterval(autoSlideInterval);
-        }
-
-        // Inicializa o carrossel
         window.addEventListener('load', () => {
             buildCarousel();
-            // Ajusta o tamanho após carregamento das imagens
             setTimeout(() => updateCarousel(), 100);
             window.addEventListener('resize', () => updateCarousel());
             startAutoSlide();
-
-            // Pausa ao passar o mouse sobre o carrossel
             const carouselContainer = document.querySelector('.carousel-container');
             carouselContainer.addEventListener('mouseenter', stopAutoSlide);
             carouselContainer.addEventListener('mouseleave', startAutoSlide);
         });
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            stopAutoSlide();
-            nextSlide();
-            startAutoSlide();
-        });
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            stopAutoSlide();
-            prevSlide();
-            startAutoSlide();
-        });
+        document.getElementById('nextBtn').addEventListener('click', () => { stopAutoSlide(); nextSlide(); startAutoSlide(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { stopAutoSlide(); prevSlide(); startAutoSlide(); });
 
-        // Status do servidor
+        // Status do servidor (sem MOTD)
         async function fetchServerStatus() {
             try {
                 const response = await fetch('https://api.mcsrvstat.us/2/igcraft.com.br');
                 const data = await response.json();
                 const statusDiv = document.getElementById('statusText');
                 const playersDiv = document.getElementById('playersInfo');
-                const motdDiv = document.getElementById('motdInfo');
                 const versionDiv = document.getElementById('versionInfo');
                 const topStatusSpan = document.getElementById('topStatusText');
                 if (data.online) {
@@ -1349,11 +1301,6 @@
                     const players = data.players.online;
                     const maxPlayers = data.players.max;
                     playersDiv.innerHTML = `<span class="players-count">${players}/${maxPlayers}</span> jogadores online`;
-                    if (data.motd && data.motd.clean && data.motd.clean.length) {
-                        motdDiv.innerHTML = `<div class="motd">${data.motd.clean.join(' ')}</div>`;
-                    } else {
-                        motdDiv.innerHTML = '';
-                    }
                     if (data.version) {
                         versionDiv.innerHTML = `Versão: ${data.version}`;
                     } else {
@@ -1363,7 +1310,6 @@
                     statusDiv.innerHTML = '<span class="status-offline"><i class="fas fa-times-circle"></i> Offline</span>';
                     topStatusSpan.innerHTML = '<span class="status-offline-text"><i class="fas fa-times-circle"></i> Offline</span>';
                     playersDiv.innerHTML = '';
-                    motdDiv.innerHTML = '';
                     versionDiv.innerHTML = '';
                 }
             } catch (error) {
@@ -1375,9 +1321,9 @@
         fetchServerStatus();
         setInterval(fetchServerStatus, 60000);
 
-        // Tooltips e toast para comandos (mesmo código anterior)
+        // Tooltips dos comandos
         (function() {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             const commands = document.querySelectorAll('.command-item');
             let activeTooltip = null;
 
@@ -1391,24 +1337,17 @@
                 tooltip.style.top = (y - 35) + 'px';
                 activeTooltip = tooltip;
             }
-
-            function hideTooltip() {
-                if (activeTooltip) {
-                    activeTooltip.remove();
-                    activeTooltip = null;
-                }
-            }
-
-            function showToast(message) {
-                document.querySelectorAll('.toast-message').forEach(toast => toast.remove());
+            function hideTooltip() { if (activeTooltip) { activeTooltip.remove(); activeTooltip = null; } }
+            function showToast(msg) {
+                document.querySelectorAll('.toast-message').forEach(t => t.remove());
                 const toast = document.createElement('div');
                 toast.className = 'toast-message';
-                toast.textContent = message;
+                toast.textContent = msg;
                 document.body.appendChild(toast);
                 setTimeout(() => toast.remove(), 2500);
             }
 
-            if (!isTouchDevice) {
+            if (!isTouch) {
                 commands.forEach(cmd => {
                     cmd.addEventListener('mouseenter', (e) => {
                         const desc = cmd.getAttribute('data-desc');
@@ -1423,7 +1362,6 @@
             } else {
                 commands.forEach(cmd => {
                     cmd.addEventListener('click', (e) => {
-                        e.stopPropagation();
                         const desc = cmd.getAttribute('data-desc');
                         if (desc) showToast(desc);
                     });

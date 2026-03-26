@@ -1072,16 +1072,16 @@
                     <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (reset às 00:00)</span></div>
                 </div>
                 <div class="bp-table">
-                    <table>
+                     <table>
                         <thead>
-                            <tr><th>Nível</th><th>Comum (Gratuito)</th><th>Premium <span class="bp-premium-badge">250 moedas</span></th></tr>
+                            <tr><th>Nível</th><th>Comum (Gratuito)</th><th>Premium <span class="bp-premium-badge">250 moedas</span></th> </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Terminados em 5</td><td>300 dinheiro</td><td>450 dinheiro + itens especiais</td></tr>
-                            <tr><td>Terminados em 0</td><td>500 dinheiro</td><td>750 dinheiro + itens especiais</td></tr>
-                            <tr><td>Demais níveis</td><td>150 dinheiro</td><td>225 dinheiro + itens variados</td></tr>
+                            <tr><td>Terminados em 5</td><td>300 dinheiro</td><td>450 dinheiro + itens especiais</td> </tr>
+                            <tr><td>Terminados em 0</td><td>500 dinheiro</td><td>750 dinheiro + itens especiais</td> </tr>
+                            <tr><td>Demais níveis</td><td>150 dinheiro</td><td>225 dinheiro + itens variados</td> </tr>
                         </tbody>
-                    </table>
+                     </table>
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 2rem 0;">
                     <div class="bp-stat" style="background: #141414; flex:1; min-width: 200px;">
@@ -1120,15 +1120,13 @@
             </div>
         </section>
 
-        <!-- GALERIA EM CARROSSEL -->
+        <!-- GALERIA EM CARROSSEL COM ROTAÇÃO AUTOMÁTICA E DESCRIÇÕES COMPLETAS -->
         <section id="galeria">
             <h2 class="section-title">📸 Galeria</h2>
             <div class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-slides" id="carouselSlides">
-                            <!-- Slides serão inseridos via JS -->
-                        </div>
+                        <div class="carousel-slides" id="carouselSlides"></div>
                     </div>
                     <button class="carousel-button prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                     <button class="carousel-button next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -1232,7 +1230,7 @@
         tryLoadGif('xpGifMaster', 'xp-converter.gif');
         tryLoadGif('xpGifSupremo', 'xp-converter.gif');
 
-        // Carrossel
+        // Carrossel com descrições completas e rotação automática
         const images = [
             { src: 'Spawn.png', desc: 'Visão superior do Spawn – área principal da loja e entrada.' },
             { src: 'Npcsdeteleporte.png', desc: 'NPCs de teleporte: The End, Eventos, Nether, Recursos, Sobrevivência, Arena PvP, e Spawner SmartSpawners.' },
@@ -1244,6 +1242,7 @@
         const slidesContainer = document.getElementById('carouselSlides');
         const dotsContainer = document.getElementById('carouselDots');
         let currentIndex = 0;
+        let autoSlideInterval;
 
         function buildCarousel() {
             slidesContainer.innerHTML = '';
@@ -1258,7 +1257,7 @@
                 imgElem.title = img.desc; // tooltip para desktop
                 const caption = document.createElement('div');
                 caption.className = 'carousel-caption';
-                caption.textContent = img.desc.length > 80 ? img.desc.substring(0,77)+'...' : img.desc;
+                caption.textContent = img.desc; // texto completo
                 slideDiv.appendChild(imgElem);
                 slideDiv.appendChild(caption);
                 slidesContainer.appendChild(slideDiv);
@@ -1266,7 +1265,11 @@
                 // Dot
                 const dot = document.createElement('div');
                 dot.className = 'carousel-dot';
-                dot.addEventListener('click', () => goToSlide(i));
+                dot.addEventListener('click', () => {
+                    stopAutoSlide();
+                    goToSlide(i);
+                    startAutoSlide();
+                });
                 dotsContainer.appendChild(dot);
             });
             updateCarousel();
@@ -1274,7 +1277,8 @@
 
         function updateCarousel() {
             const slides = document.querySelectorAll('.carousel-slide');
-            const width = slides[0]?.clientWidth || 0;
+            if (slides.length === 0) return;
+            const width = slides[0].clientWidth;
             slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             const dots = document.querySelectorAll('.carousel-dot');
             dots.forEach((dot, i) => {
@@ -1293,16 +1297,41 @@
         function nextSlide() { goToSlide(currentIndex + 1); }
         function prevSlide() { goToSlide(currentIndex - 1); }
 
-        // Aguarda carregamento completo e ajusta tamanho
+        function startAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000); // 5 segundos
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+        }
+
+        // Inicializa o carrossel
         window.addEventListener('load', () => {
             buildCarousel();
-            // Se as imagens demorarem, recalcular após carregamento
+            // Ajusta o tamanho após carregamento das imagens
             setTimeout(() => updateCarousel(), 100);
             window.addEventListener('resize', () => updateCarousel());
+            startAutoSlide();
+
+            // Pausa ao passar o mouse sobre o carrossel
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+            carouselContainer.addEventListener('mouseleave', startAutoSlide);
         });
 
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            stopAutoSlide();
+            prevSlide();
+            startAutoSlide();
+        });
 
         // Status do servidor
         async function fetchServerStatus() {

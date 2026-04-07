@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== ESTILOS GLOBAIS (mesmos anteriores, com ajustes para a nova seção) ===== */
         * {
             margin: 0;
             padding: 0;
@@ -348,6 +349,40 @@
             color: #aaa;
         }
 
+        /* Grid para datapacks */
+        .datapack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .datapack-card {
+            background: #1a1a1a;
+            border-radius: 32px;
+            padding: 1.5rem;
+            border: 1px solid var(--roxo);
+            transition: transform 0.2s;
+        }
+        .datapack-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--amarelo);
+        }
+        .datapack-card h3 {
+            color: var(--ciano);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .datapack-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        .datapack-card i {
+            font-size: 2rem;
+            color: var(--amarelo);
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
         .commands-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -369,7 +404,6 @@
             transition: 0.2s;
             font-size: 0.95rem;
             cursor: pointer;
-            position: relative;
         }
         .command-item:hover {
             background: var(--roxo);
@@ -385,18 +419,13 @@
             padding: 0.5rem 1rem;
             border-radius: 30px;
             font-size: 0.85rem;
-            font-weight: normal;
-            font-family: 'Segoe UI', sans-serif;
             border-left: 4px solid var(--ciano);
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             z-index: 10000;
-            white-space: nowrap;
             pointer-events: none;
             backdrop-filter: blur(4px);
             max-width: 300px;
-            white-space: normal;
             text-align: center;
-            line-height: 1.3;
         }
         .toast-message {
             position: fixed;
@@ -407,15 +436,9 @@
             color: var(--amarelo);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            font-size: 1rem;
             border-left: 5px solid var(--ciano);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
             z-index: 10001;
-            white-space: nowrap;
-            font-family: monospace;
-            backdrop-filter: blur(8px);
             animation: fadeInOut 2.5s ease forwards;
-            pointer-events: none;
         }
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
@@ -438,109 +461,88 @@
             width: min(100%, 550px);
             border: 2px solid;
             transition: 0.3s;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
         }
         .vip-card.master { border-color: var(--ciano); }
         .vip-card.supremo { border-color: var(--vermelho); }
-        .vip-card:hover { transform: translateY(-6px); box-shadow: 0 25px 40px rgba(0,0,0,0.8); }
-        .vip-card.master:hover { border-color: var(--amarelo); }
-        .vip-card.supremo:hover { border-color: var(--amarelo); }
+        .vip-card:hover { transform: translateY(-6px); }
         .vip-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
-        .vip-header h3 { font-size: 2.2rem; font-weight: 800; }
+        .vip-header h3 { font-size: 2rem; }
         .vip-header .price {
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 1.8rem;
             background: #2a2a2a;
-            padding: 0.4rem 1.2rem;
+            padding: 0.3rem 1rem;
             border-radius: 60px;
         }
-        .master .price { color: var(--ciano); border: 1px solid var(--ciano); }
-        .supremo .price { color: var(--vermelho); border: 1px solid var(--vermelho); }
         .vip-info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
+            gap: 0.8rem;
             background: #1e1e1e;
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 24px;
         }
         .info-item {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            color: #ccc;
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
         .info-item i { width: 24px; color: var(--amarelo); }
-        .info-item .gif-ref {
-            margin-left: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-        }
-        .info-item .gif-ref img {
-            max-height: 20px;
-            width: auto;
-            cursor: pointer;
-        }
         .vip-commands, .vip-bonus {
             background: #1a1a1a;
-            padding: 1rem 1.5rem;
+            padding: 1rem;
             border-radius: 20px;
             margin: 1rem 0;
         }
-        .vip-commands h4, .vip-bonus h4 { color: var(--amarelo); margin-bottom: 0.8rem; font-size: 1.3rem; }
         .cmd-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
         .cmd-tags span {
             background: #2a2a2a;
-            padding: 0.3rem 1rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 30px;
             font-family: monospace;
-            border-left: 3px solid var(--ciano);
+            font-size: 0.8rem;
         }
         .kits-container {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 1rem;
+            gap: 1rem;
         }
         .kit-item {
             background: #202020;
             border-radius: 20px;
-            padding: 1rem;
+            padding: 0.8rem;
         }
-        .kit-item h5 { color: var(--ciano); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .kit-item h5 { color: var(--ciano); margin-bottom: 0.3rem; }
         .kit-item ul {
-            list-style: none;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem 1rem;
+            gap: 0.3rem 0.8rem;
+            list-style: none;
         }
         .kit-item li {
             background: #2d2d2d;
-            padding: 0.2rem 0.8rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 30px;
-            font-size: 0.9rem;
-            color: #ccc;
+            font-size: 0.8rem;
         }
 
         .members-features {
             background: #111;
             border-radius: 50px;
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border: 1px solid var(--roxo);
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem 2rem;
+            gap: 1rem;
             margin-top: 2rem;
         }
         .members-features li {
@@ -548,11 +550,9 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            color: #bbb;
         }
         .members-features li i { color: var(--ciano); width: 24px; }
 
-        /* Battle Pass (refinado) */
         .bp-section {
             background: #0f0f0f;
             border-radius: 60px;
@@ -569,18 +569,17 @@
         .bp-stat {
             background: #1a1a1a;
             border-radius: 40px;
-            padding: 1rem 2rem;
+            padding: 1rem;
             text-align: center;
             flex: 1;
-            min-width: 180px;
+            min-width: 160px;
             border-bottom: 3px solid var(--ciano);
         }
-        .bp-stat i { font-size: 2rem; color: var(--amarelo); margin-bottom: 0.5rem; display: block; }
-        .bp-stat span { font-size: 1.2rem; color: #ddd; }
-        .bp-stat strong { font-size: 1.6rem; color: var(--ciano); display: block; margin-top: 0.3rem; }
+        .bp-stat i { font-size: 2rem; color: var(--amarelo); display: block; margin-bottom: 0.5rem; }
+        .bp-stat strong { font-size: 1.5rem; color: var(--ciano); display: block; }
         .bp-rewards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
@@ -590,28 +589,13 @@
             padding: 1.5rem;
             text-align: center;
         }
-        .reward-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
         .reward-card.comum h3 { color: var(--ciano); }
         .reward-card.premium h3 { color: var(--amarelo); }
-        .reward-card ul {
-            list-style: none;
-            margin-top: 1rem;
-            text-align: left;
-            padding-left: 1rem;
-        }
-        .reward-card li {
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .reward-card li i { width: 24px; color: var(--amarelo); }
+        .reward-card ul { text-align: left; margin-top: 1rem; padding-left: 1rem; }
+        .reward-card li { margin: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem; }
         .bp-shop {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin: 2rem 0;
         }
@@ -622,8 +606,7 @@
             text-align: center;
             border-left: 4px solid var(--ciano);
         }
-        .bp-shop-item .price { font-size: 1.4rem; font-weight: bold; color: var(--amarelo); }
-        .bp-shop-item .name { font-weight: bold; color: #fff; }
+        .bp-shop-item .price { font-size: 1.3rem; font-weight: bold; color: var(--amarelo); }
         .bp-ranking {
             background: #1a1a1a;
             border-radius: 40px;
@@ -639,20 +622,17 @@
         }
         .rank-item {
             background: #252525;
-            padding: 0.3rem 1rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* Carrossel */
         .carousel-container {
             background: #0f0f0f;
             border-radius: 60px;
             padding: 2rem;
             border: 1px solid var(--roxo);
             margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
         }
         .carousel {
             position: relative;
@@ -662,11 +642,10 @@
         .carousel-inner {
             overflow: hidden;
             border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .carousel-slides {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease;
         }
         .carousel-slide {
             flex: 0 0 100%;
@@ -674,7 +653,6 @@
         }
         .carousel-slide img {
             width: 100%;
-            height: auto;
             display: block;
             border-radius: 30px;
         }
@@ -687,8 +665,6 @@
             padding: 1rem;
             text-align: center;
             color: #fff;
-            font-size: 1rem;
-            font-weight: bold;
             border-radius: 0 0 30px 30px;
         }
         .carousel-button {
@@ -699,15 +675,9 @@
             color: var(--amarelo);
             border: none;
             font-size: 2rem;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 0.8rem;
             cursor: pointer;
             border-radius: 50%;
-            transition: background 0.3s;
-            z-index: 10;
-        }
-        .carousel-button:hover {
-            background: var(--roxo);
-            color: #000;
         }
         .carousel-button.prev { left: 10px; }
         .carousel-button.next { right: 10px; }
@@ -723,14 +693,12 @@
             border-radius: 50%;
             background: #555;
             cursor: pointer;
-            transition: background 0.3s;
         }
         .carousel-dot.active {
             background: var(--amarelo);
             box-shadow: 0 0 8px var(--amarelo);
         }
 
-        /* Status Card (sem MOTD) */
         .status-card {
             background: #0f0f0f;
             border-radius: 60px;
@@ -746,129 +714,92 @@
         .btn-discord-purchase {
             background: #5865F2;
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 40px;
             text-decoration: none;
-            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
-            transition: 0.3s;
+            gap: 0.5rem;
             margin-top: 1rem;
         }
-        .btn-discord-purchase:hover {
-            background: #4752c4;
-            transform: translateY(-2px);
-        }
-
         .ip-section {
             background: #0f0f0f;
             border-radius: 60px;
-            padding: 3rem 2rem;
+            padding: 2rem;
             margin: 3rem auto;
             border: 2px solid var(--roxo);
-            box-shadow: 0 0 40px rgba(155, 77, 255, 0.3);
             text-align: center;
         }
         .ip-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 2rem;
         }
         .ip-box {
             background: #1a1a1a;
-            padding: 2rem 2.5rem;
+            padding: 1.5rem;
             border-radius: 40px;
-            min-width: 280px;
+            min-width: 260px;
             border: 1px solid var(--ciano);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-            transition: transform 0.2s;
         }
-        .ip-box:hover { transform: scale(1.02); }
-        .ip-box h3 { color: var(--amarelo); font-size: 2rem; margin-bottom: 1rem; }
         .ip-address, .ip-port {
-            font-family: 'Courier New', monospace;
-            font-size: 1.4rem;
+            font-family: monospace;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--ciano);
             background: #000;
-            padding: 0.7rem 1rem;
+            padding: 0.5rem 1rem;
             border-radius: 60px;
-            border: 1px solid var(--roxo);
-            word-break: break-all;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
             display: inline-block;
-            margin: 0.3rem;
+            cursor: pointer;
+            margin: 0.2rem;
         }
-        .ip-address:hover, .ip-port:hover {
-            background: var(--roxo);
-            color: #000;
-            border-color: var(--amarelo);
-        }
-        .ip-address.copied, .ip-port.copied {
-            background: var(--amarelo);
-            color: #000;
-            border-color: var(--roxo);
-        }
-        .ip-label { margin-top: 0.8rem; color: #aaa; font-size: 1rem; }
-        .copy-hint { font-size: 0.85rem; color: #888; margin-top: 0.5rem; }
-        .separator { display: inline-block; font-size: 1.6rem; margin: 0 0.2rem; color: var(--amarelo); }
+        .separator { font-size: 1.5rem; margin: 0 0.2rem; color: var(--amarelo); }
 
         footer {
             background: #070707;
-            padding: 3rem 5% 1.5rem;
+            padding: 2rem 5%;
             border-top: 2px solid var(--ciano);
             text-align: center;
         }
         .footer-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
         .footer-links a { color: #aaa; text-decoration: none; }
         .footer-links a:hover { color: var(--amarelo); }
-        .social a { color: #5865F2; font-size: 2.5rem; transition: 0.3s; }
-        .social a:hover { color: #4752c4; transform: scale(1.2); display: inline-block; }
-        .copy { color: #444; margin-top: 2rem; font-size: 0.9rem; }
+        .social a { color: #5865F2; font-size: 2rem; margin: 0 0.5rem; }
+        .copy { color: #444; margin-top: 1rem; font-size: 0.8rem; }
 
-        /* Menu mobile com rolagem */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -300px;
+                right: -260px;
                 width: 260px;
                 height: 100vh;
                 background: #0f0f0f;
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 5rem 1.5rem 2rem;
-                gap: 1.2rem;
-                transition: right 0.3s ease-in-out;
+                padding: 5rem 1rem 2rem;
+                gap: 1rem;
+                transition: right 0.3s;
                 z-index: 1001;
-                box-shadow: -5px 0 20px rgba(0,0,0,0.8);
-                border-left: 2px solid var(--roxo);
-                overflow-y: auto; /* permite rolagem se conteúdo exceder altura */
+                overflow-y: auto;
             }
             .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.2rem; width: 100%; padding: 0.5rem 0; border-bottom: 1px solid #333; }
-            .nav-links .btn-discord { width: 100%; justify-content: center; margin-top: 0.5rem; }
-            .close-menu { display: block; position: absolute; top: 1rem; right: 1rem; font-size: 2rem; color: var(--amarelo); background: none; border: none; cursor: pointer; }
-            .ip-simple { flex-direction: column; align-items: center; gap: 0.8rem; }
+            .close-menu { display: block; position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none; color: var(--amarelo); }
+            .ip-simple { flex-direction: column; align-items: center; }
         }
         @media (min-width: 769px) { .close-menu { display: none !important; } }
         @media (max-width: 480px) {
-            .nav-container { padding: 0.5rem 4%; }
-            .logo { font-size: 1.5rem; }
-            .ip-box { width: 100%; }
-            .ip-address, .ip-port { font-size: 1.1rem; padding: 0.5rem 0.8rem; }
-            .toast-message { font-size: 0.9rem; white-space: normal; width: 90%; max-width: 280px; }
+            .logo { font-size: 1.4rem; }
+            .ip-address, .ip-port { font-size: 1rem; }
         }
     </style>
 </head>
@@ -876,11 +807,12 @@
     <header>
         <div class="nav-container">
             <div class="logo">IG Craft</div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             <nav class="nav-links" id="navLinks">
-                <button class="close-menu" id="closeMenu" aria-label="Fechar menu"><i class="fas fa-times"></i></button>
+                <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
                 <a href="#home">Início</a>
                 <a href="#recursos">Recursos</a>
+                <a href="#geracao">Geração</a>
                 <a href="#comandos">Comandos</a>
                 <a href="#vips">Vips</a>
                 <a href="#membros">Membros</a>
@@ -907,20 +839,9 @@
         </section>
 
         <div class="ip-simple">
-            <div class="ip-simple-item">
-                <i class="fas fa-coffee"></i>
-                <span class="ip-code" id="simpleJava" onclick="copySimpleIP('igcraft.com.br', 'simpleJava')">igcraft.com.br</span>
-                <span class="ip-simple-label">Java 1.21.8+</span>
-            </div>
-            <div class="ip-simple-item">
-                <i class="fas fa-mobile-alt"></i>
-                <span class="ip-code" id="simpleBedrock" onclick="copySimpleIP('mc.igcraft.com.br:25466', 'simpleBedrock')">mc.igcraft.com.br:25466</span>
-                <span class="ip-simple-label">Bedrock</span>
-            </div>
-            <div class="ip-simple-item" id="topStatusContainer">
-                <i class="fas fa-server"></i>
-                <span id="topStatusText" class="status-top">Carregando...</span>
-            </div>
+            <div class="ip-simple-item"><i class="fas fa-coffee"></i><span class="ip-code" id="simpleJava" onclick="copySimpleIP('igcraft.com.br', 'simpleJava')">igcraft.com.br</span><span class="ip-simple-label">Java 1.21.8+</span></div>
+            <div class="ip-simple-item"><i class="fas fa-mobile-alt"></i><span class="ip-code" id="simpleBedrock" onclick="copySimpleIP('mc.igcraft.com.br:35595', 'simpleBedrock')">mc.igcraft.com.br:35595</span><span class="ip-simple-label">Bedrock</span></div>
+            <div class="ip-simple-item"><i class="fas fa-server"></i><span id="topStatusText" class="status-top">Carregando...</span></div>
         </div>
 
         <section id="recursos">
@@ -931,34 +852,62 @@
                 <div class="card"><i class="fas fa-gift"></i><h3>Kits iniciais</h3><p>Para começar bem</p></div>
                 <div class="card"><i class="fas fa-crown"></i><h3>Vips</h3><p>Master e Supremo</p></div>
                 <div class="card"><i class="fas fa-compass"></i><h3>RTP</h3><p>Survival, Recursos, Nether, End</p></div>
-                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos</h3><p>Clique ou passe o mouse para ver a função</p></div>
+                <div class="card"><i class="fas fa-terminal"></i><h3>Comandos</h3><p>Clique ou passe o mouse</p></div>
             </div>
+        </section>
+
+        <!-- Nova seção: Geração e Aventura -->
+        <section id="geracao">
+            <h2 class="section-title">🌍 Geração e Aventura</h2>
+            <div class="datapack-grid">
+                <div class="datapack-card">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Terralith</h3>
+                    <p>+95 novos biomas no Overworld. Vulcões, ilhas flutuantes, cânions e formações únicas. Cada exploração é uma surpresa.</p>
+                </div>
+                <div class="datapack-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Incendium</h3>
+                    <p>Nether reinventado: 192 blocos de altura, 8 novos biomas e estruturas desafiadoras. Mais perigo, mais recompensas.</p>
+                </div>
+                <div class="datapack-card">
+                    <i class="fas fa-meteor"></i>
+                    <h3>Nullscape</h3>
+                    <p>O End agora tem 384 blocos de altura, com ilhas fragmentadas e uma sensação de imensidão opressora.</p>
+                </div>
+                <div class="datapack-card">
+                    <i class="fas fa-dungeon"></i>
+                    <h3>Estruturas Épicas</h3>
+                    <p>Dungeons, castelos, ruínas, torres temáticas e aldeias renovadas. Cada canto guarda uma história.</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: #aaa; margin-top: 1rem;">Datapacks: Structory, Grim Kingdoms, Vanilla Structure Update e mais – para uma aventura sempre nova.</p>
         </section>
 
         <section id="comandos">
             <h2 class="section-title">📜 Comandos para todos</h2>
-            <div class="commands-grid" id="commandsGrid">
-                <div class="command-item" data-desc="Alterna o brilho ao redor do jogador (efeito de luz)">/luz</div>
-                <div class="command-item" data-desc="Lista, adiciona ou remove suas casas pessoais">/homes</div>
-                <div class="command-item" data-desc="Define um ponto como sua casa (máximo 3 para membros, mais para VIPs)">/sethome</div>
-                <div class="command-item" data-desc="Teleporta de volta para o último local onde você morreu ou usou /back">/back</div>
-                <div class="command-item" data-desc="Retorna ao spawn principal do servidor">/spawn</div>
-                <div class="command-item" data-desc="Abre a loja do servidor para comprar e vender itens">/shop</div>
-                <div class="command-item" data-desc="Abre uma lixeira virtual para descartar itens permanentemente">/lixeira</div>
-                <div class="command-item" data-desc="Abre uma mesa de trabalho virtual (crafting table)">/craft</div>
-                <div class="command-item" data-desc="Abre um menu para escolher em qual dimensão teleportar aleatoriamente">/rtp</div>
-                <div class="command-item" data-desc="Acessa warp públicos criados por jogadores">/pwarp</div>
-                <div class="command-item" data-desc="Envia um pedido de teleporte para outro jogador">/tpa</div>
-                <div class="command-item" data-desc="Envia uma mensagem privada para outro jogador">/tell</div>
-                <div class="command-item" data-desc="Resgata os kits disponíveis (diário, mensal, VIP, etc.)">/kit</div>
-                <div class="command-item" data-desc="Teleporta para a warp das caixas no lobby">/caixas</div>
-                <div class="command-item" data-desc="Mostra seu saldo de moedas (transferências via /troca quando próximo)">/money</div>
-                <div class="command-item" data-desc="Exibe informações sobre os VIPs e vantagens">/vip</div>
-                <div class="command-item" data-desc="Exibe o link do Discord e sincroniza a conta com 2FA">/discord</div>
-                <div class="command-item" data-desc="Troca sua skin (funciona para todos, mas pode precisar recarregar ao entrar; launchers não oficiais podem ter skins personalizadas)">/skin</div>
-                <div class="command-item" data-desc="Abre um menu de troca segura com outro jogador (itens, dinheiro, XP)">/troca</div>
-                <div class="command-item" data-desc="Vota para mudar o ciclo do tempo (dia, noite, tarde, madrugada)">/vt</div>
-                <div class="command-item" data-desc="Abre um menu com todas as bancadas (craft, bigorna, etc.)">/bancada</div>
+            <div class="commands-grid">
+                <div class="command-item" data-desc="Alterna o brilho">/luz</div>
+                <div class="command-item" data-desc="Lista suas casas">/homes</div>
+                <div class="command-item" data-desc="Define uma casa (limite 3)">/sethome</div>
+                <div class="command-item" data-desc="Volta ao último local">/back</div>
+                <div class="command-item" data-desc="Vai ao spawn">/spawn</div>
+                <div class="command-item" data-desc="Abre a loja">/shop</div>
+                <div class="command-item" data-desc="Lixeira virtual">/lixeira</div>
+                <div class="command-item" data-desc="Mesa de trabalho">/craft</div>
+                <div class="command-item" data-desc="RTP com menu de dimensões">/rtp</div>
+                <div class="command-item" data-desc="Warps públicos">/pwarp</div>
+                <div class="command-item" data-desc="Pedido de teleporte">/tpa</div>
+                <div class="command-item" data-desc="Mensagem privada">/tell</div>
+                <div class="command-item" data-desc="Resgata kits">/kit</div>
+                <div class="command-item" data-desc="Vai para as caixas (lobby)">/caixas</div>
+                <div class="command-item" data-desc="Mostra seu saldo">/money</div>
+                <div class="command-item" data-desc="Informações VIP">/vip</div>
+                <div class="command-item" data-desc="Link do Discord + 2FA">/discord</div>
+                <div class="command-item" data-desc="Troca a skin">/skin</div>
+                <div class="command-item" data-desc="Troca segura com jogador">/troca</div>
+                <div class="command-item" data-desc="Vota o ciclo do tempo">/vt</div>
+                <div class="command-item" data-desc="Menu de bancadas">/bancada</div>
             </div>
         </section>
 
@@ -966,46 +915,34 @@
             <h2 class="section-title">💎 Vips</h2>
             <div class="vips-container">
                 <div class="vip-card master">
-                    <div class="vip-header">
-                        <h3 style="color: var(--ciano);">VIP Master</h3>
-                        <span class="price">R$ 15,00</span>
-                    </div>
+                    <div class="vip-header"><h3>VIP Master</h3><span class="price">R$ 15,00</span></div>
                     <div class="vip-info-grid">
-                        <div class="info-item"><i class="fas fa-tag"></i> Tag Master (servidor/discord)</div>
+                        <div class="info-item"><i class="fas fa-tag"></i> Tag Master</div>
                         <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
-                        <div class="info-item"><i class="fas fa-home"></i> 5 homes (via /sethome)</div>
-                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 5 homes</div>
+                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 2.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 7,5% na loja</div>
-                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos<span class="gif-ref" id="xpGifMaster"></span></div>
+                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos</div>
                     </div>
-                    <div class="vip-commands">
-                        <h4>Comandos exclusivos</h4>
-                        <div class="cmd-tags"><span>/echest</span> <span>/craft</span></div>
-                    </div>
-                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>1 Chave VIP</li><li>64 Frascos de XP</li><li>24 Cenouras douradas</li><li>96 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas de Diamante</li><li>Armaduras de Diamante</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Inquebrável 3, Afiação 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>128 Frascos de XP</li><li>1 Caixa Shulker</li><li>2000 blocos proteção</li></ul></div></div></div>
-                    <a href="https://discord.gg/TmRHhzZSqQ" target="_blank" class="btn-discord-purchase"><i class="fab fa-discord"></i> Adquirir pelo Discord</a>
+                    <div class="vip-commands"><h4>Comandos</h4><div class="cmd-tags"><span>/echest</span> <span>/craft</span></div></div>
+                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>Diário</h5><ul><li>1 Chave VIP</li><li>64 Frascos XP</li><li>24 Cenoura dourada</li><li>96 Foguetes</li></ul></div><div class="kit-item"><h5>Semanal</h5><ul><li>Ferramentas de Diamante</li><li>Armaduras de Diamante</li></ul></div><div class="kit-item"><h5>Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 3)</li><li>Armaduras Diamante (Proteção 3)</li><li>Élitra, 64 Cenoura, 128 XP, Shulker, 2000 proteção</li></ul></div></div></div>
+                    <a href="https://discord.gg/TmRHhzZSqQ" class="btn-discord-purchase" target="_blank"><i class="fab fa-discord"></i> Adquirir</a>
                 </div>
                 <div class="vip-card supremo">
-                    <div class="vip-header">
-                        <h3 style="color: var(--vermelho);">VIP Supremo</h3>
-                        <span class="price">R$ 25,00</span>
-                    </div>
+                    <div class="vip-header"><h3>VIP Supremo</h3><span class="price">R$ 25,00</span></div>
                     <div class="vip-info-grid">
-                        <div class="info-item"><i class="fas fa-tag"></i> Tag Supremo (servidor/discord)</div>
+                        <div class="info-item"><i class="fas fa-tag"></i> Tag Supremo</div>
                         <div class="info-item"><i class="fas fa-rocket"></i> Teleporte sem delay</div>
-                        <div class="info-item"><i class="fas fa-home"></i> 8 homes (via /sethome)</div>
-                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 comércios /pwarp</div>
+                        <div class="info-item"><i class="fas fa-home"></i> 8 homes</div>
+                        <div class="info-item"><i class="fas fa-store-alt"></i> 2 pwarp</div>
                         <div class="info-item"><i class="fas fa-shield-alt"></i> 4.000 blocos proteção</div>
                         <div class="info-item"><i class="fas fa-percent"></i> Bônus 15% na loja</div>
-                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos<span class="gif-ref" id="xpGifSupremo"></span></div>
+                        <div class="info-item"><i class="fas fa-flask"></i> Converter XP em frascos</div>
                     </div>
-                    <div class="vip-commands">
-                        <h4>Comandos exclusivos</h4>
-                        <div class="cmd-tags"><span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span><span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span><span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span></div>
-                    </div>
-                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>📆 Diário</h5><ul><li>2 Chaves VIP</li><li>128 Frascos de XP</li><li>128 Foguetes</li></ul></div><div class="kit-item"><h5>📅 Semanal</h5><ul><li>Ferramentas Diamante (Eficiência 3, Afiação 3, Inquebrável 3)</li><li>Armaduras Diamante (Proteção 3, Inquebrável 3)</li></ul></div><div class="kit-item"><h5>📦 Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 5, Inquebrável 3, Afiação 5)</li><li>Armaduras Diamante (Proteção 4, Inquebrável 3)</li><li>1 Élitra</li><li>64 Cenoura dourada</li><li>192 Frascos de XP</li><li>1 Caixa Shulker</li><li>4000 blocos proteção</li></ul></div></div></div>
-                    <a href="https://discord.gg/TmRHhzZSqQ" target="_blank" class="btn-discord-purchase"><i class="fab fa-discord"></i> Adquirir pelo Discord</a>
+                    <div class="vip-commands"><h4>Comandos</h4><div class="cmd-tags"><span>/echest</span> <span>/craft</span> <span>/bancada</span> <span>/autopickup</span><span>/anvil</span> <span>/cartographytable</span> <span>/grindstone</span><span>/loom</span> <span>/smithingtable</span> <span>/stonecutter</span></div></div>
+                    <div class="vip-bonus"><h4>Kits</h4><div class="kits-container"><div class="kit-item"><h5>Diário</h5><ul><li>2 Chaves VIP</li><li>128 Frascos XP</li><li>128 Foguetes</li></ul></div><div class="kit-item"><h5>Semanal</h5><ul><li>Ferramentas Diamante (Eficiência 3)</li><li>Armaduras Diamante (Proteção 3)</li></ul></div><div class="kit-item"><h5>Mensal</h5><ul><li>Ferramentas Diamante (Eficiência 5)</li><li>Armaduras Diamante (Proteção 4)</li><li>Élitra, 64 Cenoura, 192 XP, Shulker, 4000 proteção</li></ul></div></div></div>
+                    <a href="https://discord.gg/TmRHhzZSqQ" class="btn-discord-purchase" target="_blank"><i class="fab fa-discord"></i> Adquirir</a>
                 </div>
             </div>
         </section>
@@ -1013,145 +950,73 @@
         <section id="membros">
             <h2 class="section-title">👥 Para todos os membros</h2>
             <ul class="members-features">
-                <li><i class="fas fa-home"></i> 3 homes (use /sethome)</li>
+                <li><i class="fas fa-home"></i> 3 homes (/sethome)</li>
                 <li><i class="fas fa-gift"></i> Kit diário e mensal</li>
                 <li><i class="fas fa-shield-virus"></i> Proteção de terreno</li>
-                <li><i class="fas fa-feather"></i> Voo permitido dentro do terreno</li>
-                <li><i class="fas fa-skull"></i> Túmulos para recuperar itens</li>
-                <li><i class="fas fa-moon"></i> PVP somente à noite</li>
-                <li><i class="fas fa-clock"></i> /vt (votar ciclo do tempo)</li>
-                <li><i class="fas fa-hammer"></i> Bigorna sem limite de XP</li>
+                <li><i class="fas fa-feather"></i> Voo no terreno</li>
+                <li><i class="fas fa-skull"></i> Túmulos</li>
+                <li><i class="fas fa-moon"></i> PVP só à noite</li>
+                <li><i class="fas fa-clock"></i> /vt (votar tempo)</li>
+                <li><i class="fas fa-hammer"></i> Bigorna sem limite XP</li>
                 <li><i class="fas fa-store"></i> 1 pwarp</li>
-                <li><i class="fas fa-exchange-alt"></i> /troca (itens, dinheiro, XP)</li>
+                <li><i class="fas fa-exchange-alt"></i> /troca</li>
                 <li><i class="fas fa-ticket-alt"></i> Passe de batalha</li>
-                <li><i class="fas fa-fist-raised"></i> Sistema anti-fuga (bloqueia teleportes e pune desconexão em PvP)</li>
-                <li><i class="fas fa-comment"></i> [item] [inv] [enderchest] no chat</li>
-                <li><i class="fab fa-discord"></i> /discord com 2FA</li>
+                <li><i class="fas fa-fist-raised"></i> Anti-fuga (bloqueia teleporte e pune desconexão)</li>
+                <li><i class="fas fa-comment"></i> [item] [inv] [enderchest]</li>
+                <li><i class="fab fa-discord"></i> /discord + 2FA</li>
                 <li><i class="fas fa-paint-roller"></i> /skin</li>
-                <li><i class="fas fa-gem"></i> Mineração em veio (requer encantamento Veinmine)</li>
-                <li><i class="fas fa-handshake"></i> Troca rápida de aldeão (agache + clique direito; no celular, use o botão de interação secundário)</li>
+                <li><i class="fas fa-gem"></i> Mineração em veio (encantamento Veinmine)</li>
+                <li><i class="fas fa-handshake"></i> Troca rápida de aldeão (agachar + clique direito)</li>
             </ul>
         </section>
 
-        <!-- PASSE DE BATALHA (refinado) -->
         <section id="battlepass">
             <h2 class="section-title">🎖️ Passe de Batalha</h2>
             <div class="bp-section">
                 <div class="bp-stats">
-                    <div class="bp-stat"><i class="fas fa-trophy"></i><span>Níveis</span><strong>1 – 54</strong></div>
-                    <div class="bp-stat"><i class="fas fa-chart-line"></i><span>XP por nível</span><strong>500 (fixo)</strong></div>
-                    <div class="bp-stat"><i class="fas fa-calendar-day"></i><span>XP diário bônus</span><strong>200 XP</strong></div>
-                    <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (veja os horários com /bp)</span></div>
+                    <div class="bp-stat"><i class="fas fa-trophy"></i><span>Níveis</span><strong>1–54</strong></div>
+                    <div class="bp-stat"><i class="fas fa-chart-line"></i><span>XP por nível</span><strong>500</strong></div>
+                    <div class="bp-stat"><i class="fas fa-calendar-day"></i><span>XP bônus diário</span><strong>200 XP</strong></div>
+                    <div class="bp-stat"><i class="fas fa-tasks"></i><span>Missões diárias</span><strong>7</strong><span style="font-size:0.8rem;"> (/bp para horários)</span></div>
                 </div>
-
                 <div class="bp-rewards">
-                    <div class="reward-card comum">
-                        <h3><i class="fas fa-star"></i> Comum (grátis)</h3>
-                        <ul>
-                            <li><i class="fas fa-coins"></i> Dinheiro + itens gerais</li>
-                            <li><i class="fas fa-gem"></i> Nas fases finais: recursos valiosos</li>
-                            <li><i class="fas fa-crown"></i> Nível 54: 30.000 dinheiro, 2 Nether Star, 2 Netherite Upgrade, 1 Mace, título 30 dias + /say global</li>
-                        </ul>
-                    </div>
-                    <div class="reward-card premium">
-                        <h3><i class="fas fa-crown"></i> Premium</h3>
-                        <div style="margin-bottom: 0.5rem;">
-                            <span class="btn-outline" style="font-size:0.9rem; padding:0.2rem 1rem;">R$ 30,00</span>
-                            <span style="margin:0 0.5rem">ou</span>
-                            <span class="btn-outline" style="font-size:0.9rem; padding:0.2rem 1rem;">250 moedas</span>
-                        </div>
-                        <ul>
-                            <li><i class="fas fa-coins"></i> Dinheiro extra + itens raros</li>
-                            <li><i class="fas fa-box"></i> Itens exclusivos e recursos avançados</li>
-                            <li><i class="fas fa-crown"></i> Nível 54: 100.000 dinheiro, título 30 dias + /say global, recompensas especiais</li>
-                        </ul>
-                    </div>
+                    <div class="reward-card comum"><h3>Comum (grátis)</h3><ul><li><i class="fas fa-coins"></i> Dinheiro + itens gerais</li><li><i class="fas fa-gem"></i> Fases finais: recursos valiosos</li><li><i class="fas fa-crown"></i> Nível 54: 30k dinheiro, 2 Nether Star, 2 Netherite Upgrade, Mace, título 30d + /say</li></ul></div>
+                    <div class="reward-card premium"><h3>Premium</h3><div><span class="btn-outline" style="font-size:0.8rem;">R$30,00</span> ou <span class="btn-outline" style="font-size:0.8rem;">250 moedas</span></div><ul><li><i class="fas fa-coins"></i> Dinheiro extra + itens raros</li><li><i class="fas fa-box"></i> Itens exclusivos</li><li><i class="fas fa-crown"></i> Nível 54: 100k dinheiro, título 30d + /say, recompensas especiais</li></ul></div>
                 </div>
-
-                <div class="bp-ranking">
-                    <h4><i class="fas fa-chart-simple"></i> Ranking Diário (Top 10)</h4>
-                    <div class="bp-ranking-grid">
-                        <div class="rank-item">🥇 1º: 10 moedas</div><div class="rank-item">🥈 2º: 9 moedas</div><div class="rank-item">🥉 3º: 8 moedas</div>
-                        <div class="rank-item">4º: 7 moedas</div><div class="rank-item">5º: 6 moedas</div><div class="rank-item">6º: 5 moedas</div>
-                        <div class="rank-item">7º: 4 moedas</div><div class="rank-item">8º: 3 moedas</div><div class="rank-item">9º: 2 moedas</div><div class="rank-item">10º: 2 moedas</div>
-                    </div>
-                </div>
-
-                <h3 style="color: var(--amarelo); margin: 2rem 0 1rem; text-align: center;">🛒 Loja do Passe (moedas)</h3>
-                <div class="bp-shop">
-                    <div class="bp-shop-item"><span class="name">Passe Premium</span><br><span class="price">250</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">Blocos de proteção (500)</span><br><span class="price">20</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">Item-moeda negociável</span><br><span class="price">10 pontos → 10</span> moedas (mínimo)</div>
-                    <div class="bp-shop-item"><span class="name">Ativação XP dobrado (1h global)</span><br><span class="price">500</span> moedas</div>
-                </div>
-
-                <h3 style="color: var(--amarelo); margin: 1rem 0; text-align: center;">⚡ Comprar XP do Passe</h3>
-                <div class="bp-shop">
-                    <div class="bp-shop-item"><span class="name">100 XP</span><br><span class="price">15</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">500 XP</span><br><span class="price">70</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">1.600 XP</span><br><span class="price">200</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">3.200 XP</span><br><span class="price">380</span> moedas</div>
-                    <div class="bp-shop-item"><span class="name">6.400 XP</span><br><span class="price">700</span> moedas</div>
-                </div>
-                <p style="text-align: center; color: #aaa; margin-top: 1rem;"><i class="fas fa-info-circle"></i> Use o comando <strong>/bp</strong> dentro do jogo para ver os horários exatos de reset das missões e da distribuição de pontos.</p>
+                <div class="bp-ranking"><h4>Ranking Diário (Top 10)</h4><div class="bp-ranking-grid"><div class="rank-item">🥇 10</div><div class="rank-item">🥈 9</div><div class="rank-item">🥉 8</div><div class="rank-item">4º 7</div><div class="rank-item">5º 6</div><div class="rank-item">6º 5</div><div class="rank-item">7º 4</div><div class="rank-item">8º 3</div><div class="rank-item">9º 2</div><div class="rank-item">10º 2</div></div></div>
+                <h3 style="text-align:center; margin:1rem 0;">🛒 Loja do Passe (moedas)</h3>
+                <div class="bp-shop"><div class="bp-shop-item"><span class="name">Passe Premium</span><br><span class="price">250</span></div><div class="bp-shop-item"><span class="name">Blocos proteção (500)</span><br><span class="price">20</span></div><div class="bp-shop-item"><span class="name">Item-moeda (10 pts)</span><br><span class="price">10</span></div><div class="bp-shop-item"><span class="name">XP dobrado (1h global)</span><br><span class="price">500</span></div></div>
+                <h3 style="text-align:center; margin:1rem 0;">⚡ Comprar XP</h3>
+                <div class="bp-shop"><div class="bp-shop-item"><span class="name">100 XP</span><br><span class="price">15</span></div><div class="bp-shop-item"><span class="name">500 XP</span><br><span class="price">70</span></div><div class="bp-shop-item"><span class="name">1.600 XP</span><br><span class="price">200</span></div><div class="bp-shop-item"><span class="name">3.200 XP</span><br><span class="price">380</span></div><div class="bp-shop-item"><span class="name">6.400 XP</span><br><span class="price">700</span></div></div>
+                <p style="text-align:center; color:#aaa;"><i class="fas fa-info-circle"></i> Use <strong>/bp</strong> no jogo para ver horários de reset e mais detalhes.</p>
             </div>
         </section>
 
-        <!-- GALERIA -->
         <section id="galeria">
             <h2 class="section-title">📸 Galeria</h2>
-            <div class="carousel-container">
-                <div class="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-slides" id="carouselSlides"></div>
-                    </div>
-                    <button class="carousel-button prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-button next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                </div>
-            </div>
+            <div class="carousel-container"><div class="carousel"><div class="carousel-inner"><div class="carousel-slides" id="carouselSlides"></div></div><button class="carousel-button prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button><button class="carousel-button next" id="nextBtn"><i class="fas fa-chevron-right"></i></button><div class="carousel-dots" id="carouselDots"></div></div></div>
         </section>
 
-        <!-- STATUS (sem MOTD) -->
         <section id="status">
             <h2 class="section-title">🖥️ Status do Servidor</h2>
-            <div class="status-card" id="statusCard">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
-                    <i class="fas fa-server" style="font-size: 2rem;"></i>
-                    <div>
-                        <div id="statusText" style="font-size: 1.5rem;">Carregando...</div>
-                        <div id="playersInfo" style="font-size: 1.2rem;"></div>
-                    </div>
-                </div>
-                <div id="versionInfo" style="margin-top: 0.5rem;"></div>
-            </div>
+            <div class="status-card"><div style="display:flex; justify-content:center; gap:1rem;"><i class="fas fa-server" style="font-size:2rem;"></i><div><div id="statusText">Carregando...</div><div id="playersInfo"></div></div></div><div id="versionInfo"></div></div>
         </section>
 
         <section id="conectar" class="ip-section">
-            <h2 class="section-title" style="margin-bottom: 1rem;">🔌 Conecte-se ao servidor</h2>
-            <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Use as informações abaixo para entrar no IG Craft. Suportamos Java e Bedrock.</p>
+            <h2 class="section-title">🔌 Conecte-se</h2>
+            <p>Suporte Java e Bedrock.</p>
             <div class="ip-container">
-                <div class="ip-box">
-                    <h3><i class="fas fa-coffee"></i> Java Edition</h3>
-                    <div><div class="ip-address" id="ipJava" onclick="copyText('igcraft.com.br', 'ipJava')">igcraft.com.br</div></div>
-                    <div class="ip-label"><i class="fas fa-gamepad"></i> Versão 1.21.8+</div>
-                    <div class="copy-hint">Clique no IP para copiar (não precisa de porta)</div>
-                </div>
-                <div class="ip-box">
-                    <h3><i class="fas fa-mobile-alt"></i> Bedrock Edition</h3>
-                    <div><div class="ip-address" id="ipBedrock" onclick="copyText('mc.igcraft.com.br', 'ipBedrock')">mc.igcraft.com.br</div><span class="separator">:</span><div class="ip-port" id="portBedrock" onclick="copyText('25466', 'portBedrock')">25466</div></div>
-                    <div class="ip-label"><i class="fas fa-wifi"></i> Clique no IP ou na porta para copiar individualmente</div>
-                    <div class="copy-hint">Endereço completo: mc.igcraft.com.br:25466</div>
-                </div>
+                <div class="ip-box"><h3><i class="fas fa-coffee"></i> Java</h3><div><div class="ip-address" id="ipJava" onclick="copyText('igcraft.com.br', 'ipJava')">igcraft.com.br</div></div><div class="ip-label">Versão 1.21.8+</div></div>
+                <div class="ip-box"><h3><i class="fas fa-mobile-alt"></i> Bedrock</h3><div><div class="ip-address" id="ipBedrock" onclick="copyText('mc.igcraft.com.br', 'ipBedrock')">mc.igcraft.com.br</div><span class="separator">:</span><div class="ip-port" id="portBedrock" onclick="copyText('35595', 'portBedrock')">35595</div></div><div class="ip-label">Porta 35595</div></div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="logo" style="font-size:2.2rem;">IG Craft</div>
-        <p style="color:#aaa;">Vanilla Plus com ferramentas inteligentes</p>
+        <div class="logo" style="font-size:2rem;">IG Craft</div>
+        <p>Vanilla Plus com ferramentas inteligentes</p>
         <div class="footer-links">
-            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#battlepass">Passe</a><a href="#galeria">Galeria</a><a href="#status">Status</a><a href="#conectar">Conectar</a>
+            <a href="#home">Início</a><a href="#recursos">Recursos</a><a href="#geracao">Geração</a><a href="#comandos">Comandos</a><a href="#vips">Vips</a><a href="#membros">Membros</a><a href="#battlepass">Passe</a><a href="#galeria">Galeria</a><a href="#status">Status</a><a href="#conectar">Conectar</a>
         </div>
         <div class="social"><a href="https://discord.gg/TmRHhzZSqQ" target="_blank"><i class="fab fa-discord"></i></a></div>
         <div class="copy">&copy; 2026 IG Craft. Minecraft é marca registrada da Mojang.</div>
@@ -1164,245 +1029,95 @@
                 const original = elem.textContent;
                 elem.classList.add('copied');
                 elem.textContent = 'Copiado! ✓';
-                setTimeout(() => {
-                    elem.classList.remove('copied');
-                    elem.textContent = original;
-                }, 1500);
-            }).catch(() => alert('Erro ao copiar. Tente manualmente.'));
+                setTimeout(() => { elem.classList.remove('copied'); elem.textContent = original; }, 1500);
+            }).catch(() => alert('Erro ao copiar.'));
         }
-
         function copySimpleIP(text, elementId) {
             navigator.clipboard.writeText(text).then(() => {
                 const elem = document.getElementById(elementId);
                 const original = elem.textContent;
                 elem.classList.add('copied');
                 elem.textContent = 'Copiado! ✓';
-                setTimeout(() => {
-                    elem.classList.remove('copied');
-                    elem.textContent = original;
-                }, 1500);
+                setTimeout(() => { elem.classList.remove('copied'); elem.textContent = original; }, 1500);
             }).catch(() => alert('Erro ao copiar.'));
         }
 
-        function tryLoadGif(containerId, gifPath) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            const img = new Image();
-            img.onload = function() {
-                const imgElement = document.createElement('img');
-                imgElement.src = gifPath;
-                imgElement.alt = "Converter XP";
-                imgElement.style.maxHeight = "20px";
-                imgElement.style.width = "auto";
-                imgElement.style.marginLeft = "6px";
-                imgElement.style.cursor = "pointer";
-                imgElement.title = "Converter XP em frascos";
-                container.appendChild(imgElement);
-            };
-            img.onerror = function() { };
-            img.src = gifPath;
-        }
-        tryLoadGif('xpGifMaster', 'xp-converter.gif');
-        tryLoadGif('xpGifSupremo', 'xp-converter.gif');
-
-        // Carrossel
         const images = [
-            { src: 'Spawn.png', desc: 'Visão superior do Spawn – área principal da loja e entrada.' },
-            { src: 'Npcsdeteleporte.png', desc: 'NPCs de teleporte: The End, Eventos, Nether, Recursos, Sobrevivência, Arena PvP, e spawners personalizados.' },
-            { src: 'CaixasAleatorias.png', desc: 'Caixas Comum e VIP – recompensas obtidas via kit diário.' },
-            { src: 'ArenaPvP.png', desc: 'Arena PvP – sempre noite e PvP sempre ativo.' },
-            { src: 'NpcsPantacaoComida.png', desc: 'NPCs Comida e Plantação – atalhos para as seções correspondentes no /shop.' }
+            { src: 'Spawn.png', desc: 'Visão superior do Spawn – área da loja.' },
+            { src: 'Npcsdeteleporte.png', desc: 'NPCs de teleporte: End, Eventos, Nether, Recursos, Survival, Arena PvP.' },
+            { src: 'CaixasAleatorias.png', desc: 'Caixas Comum e VIP – recompensas via kit diário.' },
+            { src: 'ArenaPvP.png', desc: 'Arena PvP – sempre noite.' },
+            { src: 'NpcsPantacaoComida.png', desc: 'NPCs Comida e Plantação – atalhos no /shop.' }
         ];
-
+        let currentIndex = 0, autoInterval;
         const slidesContainer = document.getElementById('carouselSlides');
         const dotsContainer = document.getElementById('carouselDots');
-        let currentIndex = 0;
-        let autoSlideInterval;
-
         function buildCarousel() {
-            slidesContainer.innerHTML = '';
-            dotsContainer.innerHTML = '';
+            slidesContainer.innerHTML = ''; dotsContainer.innerHTML = '';
             images.forEach((img, i) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = 'carousel-slide';
-                const imgElem = document.createElement('img');
-                imgElem.src = img.src;
-                imgElem.alt = img.desc;
-                imgElem.title = img.desc;
-                const caption = document.createElement('div');
-                caption.className = 'carousel-caption';
-                caption.textContent = img.desc;
-                slideDiv.appendChild(imgElem);
-                slideDiv.appendChild(caption);
-                slidesContainer.appendChild(slideDiv);
-
-                const dot = document.createElement('div');
-                dot.className = 'carousel-dot';
-                dot.addEventListener('click', () => {
-                    stopAutoSlide();
-                    goToSlide(i);
-                    startAutoSlide();
-                });
+                const slide = document.createElement('div'); slide.className = 'carousel-slide';
+                const imgEl = document.createElement('img'); imgEl.src = img.src; imgEl.alt = img.desc; imgEl.title = img.desc;
+                const cap = document.createElement('div'); cap.className = 'carousel-caption'; cap.textContent = img.desc;
+                slide.appendChild(imgEl); slide.appendChild(cap); slidesContainer.appendChild(slide);
+                const dot = document.createElement('div'); dot.className = 'carousel-dot'; dot.addEventListener('click', () => { stopAuto(); goToSlide(i); startAuto(); });
                 dotsContainer.appendChild(dot);
             });
             updateCarousel();
         }
+        function updateCarousel() { const slides = document.querySelectorAll('.carousel-slide'); if(!slides.length) return; slidesContainer.style.transform = `translateX(-${currentIndex*100}%)`; document.querySelectorAll('.carousel-dot').forEach((d,i)=> d.classList.toggle('active', i===currentIndex)); }
+        function goToSlide(i) { currentIndex = (i+images.length)%images.length; updateCarousel(); }
+        function nextSlide() { goToSlide(currentIndex+1); }
+        function prevSlide() { goToSlide(currentIndex-1); }
+        function startAuto() { if(autoInterval) clearInterval(autoInterval); autoInterval = setInterval(nextSlide, 5000); }
+        function stopAuto() { if(autoInterval) clearInterval(autoInterval); }
+        window.addEventListener('load', () => { buildCarousel(); startAuto(); document.querySelector('.carousel-container').addEventListener('mouseenter', stopAuto); document.querySelector('.carousel-container').addEventListener('mouseleave', startAuto); });
+        document.getElementById('nextBtn').addEventListener('click', () => { stopAuto(); nextSlide(); startAuto(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { stopAuto(); prevSlide(); startAuto(); });
 
-        function updateCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (slides.length === 0) return;
-            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            const dots = document.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, i) => {
-                if (i === currentIndex) dot.classList.add('active');
-                else dot.classList.remove('active');
-            });
-        }
-
-        function goToSlide(index) {
-            if (index < 0) index = images.length - 1;
-            if (index >= images.length) index = 0;
-            currentIndex = index;
-            updateCarousel();
-        }
-
-        function nextSlide() { goToSlide(currentIndex + 1); }
-        function prevSlide() { goToSlide(currentIndex - 1); }
-
-        function startAutoSlide() {
-            if (autoSlideInterval) clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(() => nextSlide(), 5000);
-        }
-        function stopAutoSlide() { if (autoSlideInterval) clearInterval(autoSlideInterval); }
-
-        window.addEventListener('load', () => {
-            buildCarousel();
-            setTimeout(() => updateCarousel(), 100);
-            window.addEventListener('resize', () => updateCarousel());
-            startAutoSlide();
-            const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-            carouselContainer.addEventListener('mouseleave', startAutoSlide);
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', () => { stopAutoSlide(); nextSlide(); startAutoSlide(); });
-        document.getElementById('prevBtn').addEventListener('click', () => { stopAutoSlide(); prevSlide(); startAutoSlide(); });
-
-        // Status do servidor (sem MOTD)
         async function fetchServerStatus() {
             try {
-                const response = await fetch('https://api.mcsrvstat.us/2/igcraft.com.br');
-                const data = await response.json();
+                const res = await fetch('https://api.mcsrvstat.us/2/igcraft.com.br');
+                const data = await res.json();
                 const statusDiv = document.getElementById('statusText');
                 const playersDiv = document.getElementById('playersInfo');
                 const versionDiv = document.getElementById('versionInfo');
-                const topStatusSpan = document.getElementById('topStatusText');
+                const topSpan = document.getElementById('topStatusText');
                 if (data.online) {
                     statusDiv.innerHTML = '<span class="status-online"><i class="fas fa-check-circle"></i> Online</span>';
-                    topStatusSpan.innerHTML = '<span class="status-online-text"><i class="fas fa-check-circle"></i> Online</span>';
-                    const players = data.players.online;
-                    const maxPlayers = data.players.max;
-                    playersDiv.innerHTML = `<span class="players-count">${players}/${maxPlayers}</span> jogadores online`;
-                    if (data.version) {
-                        versionDiv.innerHTML = `Versão: ${data.version}`;
-                    } else {
-                        versionDiv.innerHTML = '';
-                    }
+                    topSpan.innerHTML = '<span class="status-online-text"><i class="fas fa-check-circle"></i> Online</span>';
+                    playersDiv.innerHTML = `<span class="players-count">${data.players.online}/${data.players.max}</span> jogadores`;
+                    versionDiv.innerHTML = data.version ? `Versão: ${data.version}` : '';
                 } else {
                     statusDiv.innerHTML = '<span class="status-offline"><i class="fas fa-times-circle"></i> Offline</span>';
-                    topStatusSpan.innerHTML = '<span class="status-offline-text"><i class="fas fa-times-circle"></i> Offline</span>';
-                    playersDiv.innerHTML = '';
-                    versionDiv.innerHTML = '';
+                    topSpan.innerHTML = '<span class="status-offline-text"><i class="fas fa-times-circle"></i> Offline</span>';
+                    playersDiv.innerHTML = ''; versionDiv.innerHTML = '';
                 }
-            } catch (error) {
-                console.error('Erro ao buscar status:', error);
-                document.getElementById('statusText').innerHTML = '<span class="status-offline">Não foi possível verificar</span>';
-                document.getElementById('topStatusText').innerHTML = '<span class="status-offline-text">Erro</span>';
-            }
+            } catch(e) { document.getElementById('statusText').innerHTML = '<span class="status-offline">Erro</span>'; }
         }
-        fetchServerStatus();
-        setInterval(fetchServerStatus, 60000);
+        fetchServerStatus(); setInterval(fetchServerStatus, 60000);
 
-        // Tooltips dos comandos
         (function() {
-            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const isTouch = 'ontouchstart' in window;
             const commands = document.querySelectorAll('.command-item');
             let activeTooltip = null;
-
-            function showTooltip(text, x, y) {
-                if (activeTooltip) activeTooltip.remove();
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = text;
-                document.body.appendChild(tooltip);
-                tooltip.style.left = x + 'px';
-                tooltip.style.top = (y - 35) + 'px';
-                activeTooltip = tooltip;
-            }
-            function hideTooltip() { if (activeTooltip) { activeTooltip.remove(); activeTooltip = null; } }
-            function showToast(msg) {
-                document.querySelectorAll('.toast-message').forEach(t => t.remove());
-                const toast = document.createElement('div');
-                toast.className = 'toast-message';
-                toast.textContent = msg;
-                document.body.appendChild(toast);
-                setTimeout(() => toast.remove(), 2500);
-            }
-
-            if (!isTouch) {
-                commands.forEach(cmd => {
-                    cmd.addEventListener('mouseenter', (e) => {
-                        const desc = cmd.getAttribute('data-desc');
-                        if (!desc) return;
-                        const rect = cmd.getBoundingClientRect();
-                        showTooltip(desc, rect.left + rect.width/2, rect.top);
-                    });
-                    cmd.addEventListener('mouseleave', hideTooltip);
-                });
-                window.addEventListener('scroll', hideTooltip);
-                window.addEventListener('resize', hideTooltip);
-            } else {
-                commands.forEach(cmd => {
-                    cmd.addEventListener('click', (e) => {
-                        const desc = cmd.getAttribute('data-desc');
-                        if (desc) showToast(desc);
-                    });
-                });
-            }
+            function showTooltip(text, x, y) { if(activeTooltip) activeTooltip.remove(); const tt = document.createElement('div'); tt.className = 'tooltip'; tt.textContent = text; document.body.appendChild(tt); tt.style.left = x+'px'; tt.style.top = (y-35)+'px'; activeTooltip = tt; }
+            function hideTooltip() { if(activeTooltip) { activeTooltip.remove(); activeTooltip = null; } }
+            function showToast(msg) { document.querySelectorAll('.toast-message').forEach(t=>t.remove()); const toast = document.createElement('div'); toast.className = 'toast-message'; toast.textContent = msg; document.body.appendChild(toast); setTimeout(()=>toast.remove(),2500); }
+            if(!isTouch) {
+                commands.forEach(cmd => { cmd.addEventListener('mouseenter', e => { const desc = cmd.getAttribute('data-desc'); if(desc) { const rect = cmd.getBoundingClientRect(); showTooltip(desc, rect.left+rect.width/2, rect.top); } }); cmd.addEventListener('mouseleave', hideTooltip); });
+                window.addEventListener('scroll', hideTooltip); window.addEventListener('resize', hideTooltip);
+            } else { commands.forEach(cmd => cmd.addEventListener('click', e => { const desc = cmd.getAttribute('data-desc'); if(desc) showToast(desc); })); }
         })();
 
-        // Menu mobile
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const closeMenu = document.getElementById('closeMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-
-        function openMenu() {
-            navLinks.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeMenuFunc() {
-            navLinks.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        menuToggle.addEventListener('click', openMenu);
-        closeMenu.addEventListener('click', closeMenuFunc);
-        menuOverlay.addEventListener('click', closeMenuFunc);
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMenuFunc);
-        });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    if (navLinks.classList.contains('active')) closeMenuFunc();
-                }
-            });
-        });
+        function openMenu() { navLinks.classList.add('active'); menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMenuFunc() { navLinks.classList.remove('active'); menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        menuToggle.addEventListener('click', openMenu); closeMenu.addEventListener('click', closeMenuFunc); menuOverlay.addEventListener('click', closeMenuFunc);
+        document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click', closeMenuFunc));
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if(target) target.scrollIntoView({behavior:'smooth'}); if(navLinks.classList.contains('active')) closeMenuFunc(); }));
     </script>
 </body>
 </html>
